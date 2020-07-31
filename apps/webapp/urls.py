@@ -37,7 +37,7 @@ from . import views
 
 urlpatterns = [
     # path(r"^admin/", include(admin.site.urls)),
-    # path('', swapi_views.index, name='index'),
+    path('', views.HomePageView.as_view(), name='home'),
     path('docs/', views.DocsPageView.as_view(), name='docs'),
     path('about/', views.AboutPageView.as_view(), name='about'),
     # path(r"^stats$", "swapi.views.stats"),
