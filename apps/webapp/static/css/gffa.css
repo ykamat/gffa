@@ -90,6 +90,20 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
     background-color: #3a3f44;
 }
 
+.list-group {
+    margin-bottom: 20px;
+    padding-left: 0;
+}
+
+.list-group-item {
+    position: relative;
+    display: block;
+    padding: 10px 15px;
+    margin-bottom: -1px;
+    background-color: #32383e;
+    border: 1px solid rgba(0, 0, 0, 0.6);
+}
+
 .pad_top {
     padding-top: 34px;
 }
