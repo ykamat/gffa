@@ -32,3 +32,37 @@ class Person(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Species(models.Model):
+    """ A species i.e., droid. """
+
+    species_id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=40)
+    url = models.CharField(max_length=255)
+    classification = models.CharField(max_length=40, null=True)
+    designation = models.CharField(max_length=40, null=True)
+    average_height = models.CharField(max_length=40, null=True)
+    skin_colors = models.CharField(max_length=200, null=True)
+    hair_colors = models.CharField(max_length=200, null=True)
+    eye_colors = models.CharField(max_length=200, null=True)
+    average_lifespan = models.CharField(max_length=40, null=True)
+    language = models.CharField(max_length=40, null=True)
+    # people = models.ManyToManyField(People, related_name="species", on_delete=models.PROTECT, null=True)
+    # homeworld = models.ForeignKey(Planet, related_name="residents", on_delete=models.PROTECT, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'species'
+        ordering = ['name']
+        verbose_name = 'Species'
+        verbose_name_plural = 'Species'
+
+    # def get_absolute_url(self):
+    #     return reverse('species_detail', args=[self.url])
+
+    # def __unicode__(self):
+    #     return self.name
+
+    def __str__(self):
+        return self.name
