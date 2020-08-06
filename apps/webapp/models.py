@@ -1,21 +1,21 @@
 from django.db import models
-from django.urls import reverse
+# from django.urls import reverse
 
 
 class Person(models.Model):
     """ A person i.e., Luke Skywalker. """
 
     person_id = models.AutoField(primary_key=True)
-    url = models.CharField(max_length=255, null=True)
     name = models.CharField(max_length=100)
-    birth_year = models.CharField(max_length=10, null=True)
-    gender = models.CharField(max_length=10, null=True)
-    height = models.CharField(max_length=10, null=True)
-    mass = models.CharField(max_length=10, null=True)
-    eye_color = models.CharField(max_length=20, null=True)
-    hair_color = models.CharField(max_length=20, null=True)
-    skin_color = models.CharField(max_length=20, null=True)
-    #homeworld = models.ForeignKey(Planet, related_name="residents", on_delete=models.PROTECT, null=True)
+    birth_year = models.CharField(max_length=10, blank=True, null=True)
+    species = models.ForeignKey('Species', related_name="species", on_delete=models.PROTECT, blank=True, null=True)
+    gender = models.CharField(max_length=10, blank=True, null=True)
+    height = models.CharField(max_length=10, blank=True, null=True)
+    mass = models.CharField(max_length=10, blank=True, null=True)
+    eye_color = models.CharField(max_length=20, blank=True, null=True)
+    hair_color = models.CharField(max_length=20, blank=True, null=True)
+    skin_color = models.CharField(max_length=20, blank=True, null=True)
+    home_world = models.ForeignKey('Planet', related_name="person_home_world", on_delete=models.PROTECT, blank=True, null=True)
 
     class Meta:
         managed = True
@@ -38,16 +38,15 @@ class Planet(models.Model):
     """ A planet i.e. Tatooine """
 
     planet_id = models.AutoField(primary_key=True)
-    url = models.CharField(max_length=255, null=True)
     name = models.CharField(max_length=100)
-    rotation_period = models.CharField(max_length=40, null=True)
-    orbital_period = models.CharField(max_length=40, null=True)
-    diameter = models.CharField(max_length=40, null=True)
-    climate = models.CharField(max_length=40, null=True)
-    gravity = models.CharField(max_length=40, null=True)
-    terrain = models.CharField(max_length=40, null=True)
-    surface_water = models.CharField(max_length=40, null=True)
-    population = models.CharField(max_length=40, null=True)
+    rotation_period = models.CharField(max_length=40, blank=True, null=True)
+    orbital_period = models.CharField(max_length=40, blank=True, null=True)
+    diameter = models.CharField(max_length=40, blank=True, null=True)
+    climate = models.CharField(max_length=40, blank=True, null=True)
+    gravity = models.CharField(max_length=40, blank=True, null=True)
+    terrain = models.CharField(max_length=40, blank=True, null=True)
+    surface_water = models.CharField(max_length=40, blank=True, null=True)
+    population = models.CharField(max_length=40, blank=True, null=True)
 
     class Meta:
         managed = True
@@ -68,17 +67,15 @@ class Species(models.Model):
 
     species_id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=40)
-    url = models.CharField(max_length=255, null=True)
-    classification = models.CharField(max_length=40, null=True)
-    designation = models.CharField(max_length=40, null=True)
-    average_height = models.CharField(max_length=40, null=True)
-    skin_colors = models.CharField(max_length=200, null=True)
-    hair_colors = models.CharField(max_length=200, null=True)
-    eye_colors = models.CharField(max_length=200, null=True)
-    average_lifespan = models.CharField(max_length=40, null=True)
-    language = models.CharField(max_length=40, null=True)
-    # people = models.ManyToManyField(People, related_name="species", on_delete=models.PROTECT, null=True)
-    # homeworld = models.ForeignKey(Planet, related_name="residents", on_delete=models.PROTECT, null=True)
+    classification = models.CharField(max_length=40, blank=True, null=True)
+    designation = models.CharField(max_length=40, blank=True, null=True)
+    average_height = models.CharField(max_length=40, blank=True, null=True)
+    skin_colors = models.CharField(max_length=200, blank=True, null=True)
+    hair_colors = models.CharField(max_length=200, blank=True, null=True)
+    eye_colors = models.CharField(max_length=200, blank=True, null=True)
+    average_lifespan = models.CharField(max_length=40, blank=True, null=True)
+    language = models.CharField(max_length=40, blank=True, null=True)
+    home_world = models.ForeignKey('Planet', related_name="species_home_world", on_delete=models.PROTECT, blank=True, null=True)
 
     class Meta:
         managed = True
