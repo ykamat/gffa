@@ -3,21 +3,21 @@
 
     <article>
         <header>
-        <h2>Species</h2>
+        <h2>Planets</h2>
         </header>
 
-        {% if species %}
+        {% if planets %}
             <div class="row">
             <div class="col-sm-12">
-                {% for item in species %}
+                {% for planet in planets %}
                 <ul>
-                    <li>{{ item.name }}</li>
+                    <li>{{ planet.name }}</li>
                 </ul>
                 {% endfor %}
             </div>
             </div>
         {% else %}
-            <p>No Species are available to view.</p>
+            <p>No Planets are available to view.</p>
         {% endif %}
     </article>
 

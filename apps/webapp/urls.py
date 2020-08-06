@@ -46,6 +46,7 @@ urlpatterns = [
     # path(r"^api/people/schema$", "resources.schemas.people"),
     # path(r"^api/planets/schema$", "resources.schemas.planets"),
     # path(r"^api/films/schema$", "resources.schemas.films"),
+    path('planets/', views.PlanetListView.as_view(), name='planets'),
     path('species/', views.SpeciesListView.as_view(), name='species'),
     # path(r"^api/vehicles/schema$", "resources.schemas.vehicles"),
     # path(r"^api/starships/schema$", "resources.schemas.starships"),
