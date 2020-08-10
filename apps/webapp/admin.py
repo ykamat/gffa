@@ -1,5 +1,5 @@
 from django.contrib import admin
-from . models import Person, Species
+from . models import Person, Planet, Species
 
 
 @admin.register(Person)
@@ -30,6 +30,39 @@ class PersonAdmin(admin.ModelAdmin):
         'hair_color',
         'skin_color',
         'home_world'
+    ]
+
+    ordering = ['name']
+
+    list_filter = ['name']
+
+
+@admin.register(Planet)
+class PlanetAdmin(admin.ModelAdmin):
+    """Planet administration."""
+
+    fields = [
+        'name',
+        'rotation_period',
+        'orbital_period',
+        'diameter',
+        'climate',
+        'gravity',
+        'terrain',
+        'surface_water',
+        'population'
+    ]
+
+    list_display = [
+        'name',
+        'rotation_period',
+        'orbital_period',
+        'diameter',
+        'climate',
+        'gravity',
+        'terrain',
+        'surface_water',
+        'population'
     ]
 
     ordering = ['name']
