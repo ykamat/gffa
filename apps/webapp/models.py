@@ -13,7 +13,7 @@ class Film(models.Model):
     producer = models.CharField(max_length=100, blank=True, null=True)
     release_date = models.DateField(blank=True, null=True)
     people = models.ForeignKey('Person', related_name="person", on_delete=models.PROTECT, blank=True, null=True)
-    plants = models.ForeignKey('Planet', related_name="film_home_world", on_delete=models.PROTECT, blank=True, null=True)
+    planets = models.ForeignKey('Planet', related_name="film_home_world", on_delete=models.PROTECT, blank=True, null=True)
     # starships = models.ForeignKey('Starship', related_name="starship", on_delete=models.PROTECT, blank=True, null=True)
     # vehicles = models.ForeignKey('Vehicle', related_name="vehicle", on_delete=models.PROTECT, blank=True, null=True)
     species = models.ForeignKey('Species', related_name="film_species", on_delete=models.PROTECT, blank=True, null=True)

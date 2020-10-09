@@ -15,7 +15,7 @@ class FilmAdmin(admin.ModelAdmin):
         'producer',
         'release_date',
         'people',
-        'home_world',
+        'planets',
         # 'starships',
         # 'vehicles',
         'species'
@@ -30,7 +30,7 @@ class FilmAdmin(admin.ModelAdmin):
         'producer',
         'release_date',
         'people',
-        'home_world',
+        'planets',
         # 'starships',
         # 'vehicles',
         'species'
