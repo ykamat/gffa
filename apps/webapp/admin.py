@@ -1,5 +1,5 @@
 from django.contrib import admin
-from . models import Person, Planet, Species
+from . models import Person, Planet, Species, Starships
 
 
 @admin.register(Person)
@@ -98,6 +98,47 @@ class SpeciesAdmin(admin.ModelAdmin):
         'average_lifespan',
         'language',
         'home_world'
+    ]
+
+    ordering = ['name']
+
+    list_filter = ['name']
+
+
+@admin.register(Starships)
+class StarshipAdmin(admin.ModelAdmin):
+    """Starship administration."""
+
+    fields = [
+        'name',
+        'starship_class',
+        'manufacturer',
+        'cost_in_credits',
+        'length',
+        'crew',
+        'passengers',
+        'max_atmosphering_speed',
+        'hyperdrive_rating',
+        'MGLT',
+        'cargo_capacity',
+        'consumables',
+        'pilots'
+    ]
+
+    list_display = [
+        'name',
+        'starship_class',
+        'manufacturer',
+        'cost_in_credits',
+        'length',
+        'crew',
+        'passengers',
+        'max_atmosphering_speed',
+        'hyperdrive_rating',
+        'MGLT',
+        'cargo_capacity',
+        'consumables',
+        'pilots'
     ]
 
     ordering = ['name']
