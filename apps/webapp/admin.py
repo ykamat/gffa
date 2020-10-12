@@ -1,5 +1,44 @@
 from django.contrib import admin
-from . models import Person, Planet, Species, Starships
+from . models import Person, Planet, Species, Film, Starships
+
+
+@admin.register(Film)
+class FilmAdmin(admin.ModelAdmin):
+    """Film administration."""
+
+    fields = [
+        'film_id',
+        'title',
+        'episode_id',
+        'opening_crawl',
+        'director',
+        'producer',
+        'release_date',
+        'people',
+        'planets',
+        # 'starships',
+        # 'vehicles',
+        'species'
+    ]
+
+    list_display = [
+        'film_id',
+        'title',
+        'episode_id',
+        'opening_crawl',
+        'director',
+        'producer',
+        'release_date',
+        'people',
+        'planets',
+        # 'starships',
+        # 'vehicles',
+        'species'
+    ]
+
+    ordering = ['title']
+
+    list_filter = ['title']
 
 
 @admin.register(Person)

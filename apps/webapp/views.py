@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views import generic
-from . models import Person, Planet, Species, Starships
+from . models import Person, Planet, Species, Film, Starships
 
 
 class HomePageView(generic.TemplateView):
@@ -25,6 +25,20 @@ class AboutPageView(generic.TemplateView):
 
 class DocsPageView(generic.TemplateView):
 	template_name = 'webapp/docs.html'
+
+
+class FilmListView(generic.ListView):
+	model = Film
+	context_object_name = 'films'
+	template_name = 'webapp/films.html'
+	# paginate_by = 20
+
+	# def dispatch(self, *args, **kwargs):
+	# 	return super().dispatch(*args, **kwargs)
+
+	def get_queryset(self):
+		return Film.objects.all()
+		# return Person.objects.select_related('homeworld').order_by('name')
 
 
 class PersonListView(generic.ListView):
