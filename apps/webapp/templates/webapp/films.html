@@ -1,0 +1,24 @@
+{% extends 'webapp/base.html' %}
+{% block mainbody %}
+
+    <article>
+        <header>
+        <h2>Films</h2>
+        </header>
+
+        {% if films %}
+            <div class="row">
+            <div class="col-sm-12">
+                {% for film in films %}
+                <ul>
+                    <li>{{ film.title }}</li>
+                </ul>
+                {% endfor %}
+            </div>
+            </div>
+        {% else %}
+            <p>No Films are available to view.</p>
+        {% endif %}
+    </article>
+
+{% endblock mainbody %}
