@@ -157,3 +157,29 @@ class Starships(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Vehicles(models.Model):
+    """ A vehicle, i.e. Snowspeeder. """
+
+    vehicles_id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=40)
+    vehicle_class = models.CharField(max_length=40, blank=True, null=True)
+    manufacturer = models.CharField(max_length=40, blank=True, null=True)
+    length = models.CharField(max_length=40, blank=True, null=True)
+    cost_in_credits = models.CharField(max_length=40, blank=True, null=True)
+    crew = models.CharField(max_length=40, blank=True, null=True)
+    passengers = models.CharField(max_length=40, blank=True, null=True)
+    max_atmosphering_speed = models.CharField(max_length=40, blank=True, null=True)
+    cargo_capacity = models.CharField(max_length=40, blank=True, null=True)
+    consumables = models.CharField(max_length=40, blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'vehicles'
+        ordering = ['name']
+        verbose_name = 'Vehicle'
+        verbose_name_plural = 'Vehicles'
+    
+    def __str___(self):
+        return self.name

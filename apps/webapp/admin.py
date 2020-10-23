@@ -1,5 +1,6 @@
 from django.contrib import admin
-from . models import Person, Planet, Species, Film, Starships
+
+from . models import Person, Planet, Species, Film, Starships, Vehicles
 
 
 @admin.register(Film)
@@ -165,7 +166,6 @@ class StarshipAdmin(admin.ModelAdmin):
     ]
 
     list_display = [
-        'name',
         'starship_class',
         'manufacturer',
         'cost_in_credits',
@@ -178,6 +178,41 @@ class StarshipAdmin(admin.ModelAdmin):
         'cargo_capacity',
         'consumables',
         'pilots'
+    ]
+
+    ordering = ['name']
+
+    list_filter = ['name']
+
+
+@admin.register(Vehicles)
+class VehiclesAdmin(admin.ModelAdmin):
+    """Vehicles administration."""
+
+    fields = [
+        'name',
+        'vehicle_class',
+        'manufacturer',
+        'length',
+        'cost_in_credits',
+        'crew',
+        'passengers',
+        'max_atmosphering_speed',
+        'cargo_capacity',
+        'consumables'
+    ]
+
+    list_display = [
+        'name',
+        'vehicle_class',
+        'manufacturer',
+        'length',
+        'cost_in_credits',
+        'crew',
+        'passengers',
+        'max_atmosphering_speed',
+        'cargo_capacity',
+        'consumables'
     ]
 
     ordering = ['name']
