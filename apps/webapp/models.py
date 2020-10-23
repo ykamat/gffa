@@ -2,13 +2,46 @@ from django.db import models
 # from django.urls import reverse
 
 
+class Film(models.Model):
+    """ A film i.e. The Empire Strikes Back """
+
+    film_id = models.AutoField(primary_key=True)
+    title = models.CharField(max_length=100)
+    episode_id = models.IntegerField(blank=True, null=True)
+    opening_crawl = models.TextField(max_length=1000, blank=True, null=True)
+    director = models.CharField(max_length=100, blank=True, null=True)
+    producer = models.CharField(max_length=100, blank=True, null=True)
+    release_date = models.DateField(blank=True, null=True)
+    people = models.ForeignKey('Person', related_name="film_people", on_delete=models.PROTECT, blank=True, null=True)
+    planets = models.ForeignKey('Planet', related_name="film_planets", on_delete=models.PROTECT, blank=True, null=True)
+    # starships = models.ForeignKey('Starship', related_name="film_starships", on_delete=models.PROTECT, blank=True, null=True)
+    # vehicles = models.ForeignKey('Vehicle', related_name="film_vehicles", on_delete=models.PROTECT, blank=True, null=True)
+    species = models.ForeignKey('Species', related_name="film_species", on_delete=models.PROTECT, blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'film'
+        ordering = ['title']
+        verbose_name = 'Film'
+        verbose_name_plural = 'Films'
+
+    # def get_absolute_url(self):
+    #     return reverse('person_detail', args=[self.url])
+
+    # def __unicode__(self):
+    #     return self.name
+
+    def __str__(self):
+        return self.title
+
+
 class Person(models.Model):
     """ A person i.e., Luke Skywalker. """
 
     person_id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=100)
     birth_year = models.CharField(max_length=10, blank=True, null=True)
-    species = models.ForeignKey('Species', related_name="species", on_delete=models.PROTECT, blank=True, null=True)
+    species = models.ForeignKey('Species', related_name="person_species", on_delete=models.PROTECT, blank=True, null=True)
     gender = models.CharField(max_length=10, blank=True, null=True)
     height = models.CharField(max_length=10, blank=True, null=True)
     mass = models.CharField(max_length=10, blank=True, null=True)
@@ -64,7 +97,7 @@ class Planet(models.Model):
 
 
 class Species(models.Model):
-    """ A species i.e., droid. """
+    """ A species i.e. droid. """
 
     species_id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=40)
