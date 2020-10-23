@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views import generic
-from . models import Person, Planet, Species, Film, Vehicles
+from . models import Film, Person, Planet, Species, Starships, Vehicles
 
 
 class HomePageView(generic.TemplateView):
@@ -81,6 +81,18 @@ class SpeciesListView(generic.ListView):
 	def get_queryset(self):
 		return Species.objects.all()
 		# return Species.objects.select_related('homeworld').order_by('name')
+
+
+class StarshipListView(generic.ListView):
+	model = Starships
+	context_object_name = 'starships'
+	template_name = 'webapp/starships.html'
+
+
+	def get_queryset(self):
+		return Starships.objects.all()
+		# return Starship.objects.select_related('?').order_by('?')
+
 
 class VehiclesListView(generic.ListView):
 	model = Vehicles
