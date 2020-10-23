@@ -23,5 +23,6 @@ from django.urls import include, path
 urlpatterns = [
     path('', lambda r: HttpResponseRedirect('apps/webapp/')),
     path('admin/', admin.site.urls),
-    path('apps/webapp/', include('apps.webapp.urls'))
+    path('apps/webapp/', include('apps.webapp.urls')),
+    path('api/', include('apps.api.urls')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
