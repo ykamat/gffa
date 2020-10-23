@@ -16,6 +16,7 @@ class Person(models.Model):
     hair_color = models.CharField(max_length=20, blank=True, null=True)
     skin_color = models.CharField(max_length=20, blank=True, null=True)
     home_world = models.ForeignKey('Planet', related_name="person_home_world", on_delete=models.PROTECT, blank=True, null=True)
+    owner = models.ForeignKey('auth.User', related_name='people', on_delete=models.CASCADE, blank=True, null=True)
 
     class Meta:
         managed = True
