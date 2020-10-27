@@ -3,6 +3,7 @@ from rest_framework import serializers
 from django.contrib.auth.models import User
 from apps.webapp.models import Person, Planet
 
+
 class PersonSerializer(serializers.HyperlinkedModelSerializer):
     
     class Meta:
@@ -25,6 +26,7 @@ class PersonSerializer(serializers.HyperlinkedModelSerializer):
             # 'created',           
             # 'edited',
             )
+
 
 class PlanetSerializer(serializers.HyperlinkedModelSerializer):
 

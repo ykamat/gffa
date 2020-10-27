@@ -6,6 +6,7 @@ from django.contrib.auth.models import User
 from apps.webapp.models import Person, Planet
 from .serializers import PersonSerializer, PlanetSerializer
 
+
 class PersonViewSet(viewsets.ModelViewSet):
     queryset = Person.objects.all()
     serializer_class = PersonSerializer
@@ -21,6 +22,7 @@ class PersonViewSet(viewsets.ModelViewSet):
             queryset = queryset.filter(home_world__name__contains=home_world)
     
         return queryset.order_by('person_id')
+
 
 class PlanetViewSet(viewsets.ModelViewSet):
     queryset = Planet.objects.all()
