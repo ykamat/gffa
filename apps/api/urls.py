@@ -4,6 +4,8 @@ from . import views
 
 router = routers.DefaultRouter()
 router.register(r'people', views.PersonViewSet)
+router.register(r'planets', views.PlanetViewSet)
+
 
 urlpatterns = [
     path('', include(router.urls)),
