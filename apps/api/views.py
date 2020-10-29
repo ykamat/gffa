@@ -14,13 +14,13 @@ class PersonViewSet(viewsets.ModelViewSet):
     
     def get_queryset(self):
         queryset = Person.objects.all()
-        name = self.request.query_params.get('name', None)
         home_world = self.request.query_params.get('home_world', None)
+        name = self.request.query_params.get('name',None)
+        if home_world:
+            queryset = queryset.filter(home_world__name__iexact=home_world)
         if name:
             queryset = queryset.filter(name__contains=name)
-        if home_world:
-            queryset = queryset.filter(home_world__name__contains=home_world)
-    
+            
         return queryset.order_by('person_id')
 
 
