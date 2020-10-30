@@ -26,3 +26,4 @@ snowballstemmer==2.0.0
 sqlparse==0.3.1
 toml==0.10.1
 wrapt==1.12.1
+djangorestframework==3.12.1
