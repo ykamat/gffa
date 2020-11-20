@@ -1,11 +1,33 @@
 from rest_framework import serializers
 
 from django.contrib.auth.models import User
-from apps.webapp.models import Person, Planet, Species
+from apps.webapp.models import Film, Person, Planet, Species
+
+
+class FilmSerializer(serializers.HyperlinkedModelSerializer):
+
+    class Meta:
+        model = Film
+        fields = (
+            'title',
+            'episode_id',
+            'opening_crawl',
+            'director',
+            'producer',
+            'release_date',
+            'species',
+            # 'starships',
+            # 'vehicles',
+            'people',
+            'planets',
+            # 'url',
+            # 'created',
+            # 'edited'
+        )
 
 
 class PersonSerializer(serializers.HyperlinkedModelSerializer):
-    
+
     class Meta:
         model = Person
         fields = (
@@ -23,7 +45,7 @@ class PersonSerializer(serializers.HyperlinkedModelSerializer):
             # 'starships',
             # 'vehicles',
             'url',
-            # 'created',           
+            # 'created',
             # 'edited',
             )
 
@@ -64,7 +86,7 @@ class SpeciesSerializer(serializers.HyperlinkedModelSerializer):
             # 'skin_colors',
             # 'hair_colors',
             # 'eye_colors',
-            # 'average_lifespan',
+            'average_lifespan',
             'language',
             'home_world'
         }
