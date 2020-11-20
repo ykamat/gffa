@@ -80,12 +80,12 @@ class SpeciesSerializer(serializers.HyperlinkedModelSerializer):
         fields = {
             'species_id',
             'name',
-            # 'classification',
-            # 'designation',
-            # 'average_height',
-            # 'skin_colors',
-            # 'hair_colors',
-            # 'eye_colors',
+            'classification',
+            'designation',
+            'average_height',
+            'skin_colors',
+            'hair_colors',
+            'eye_colors',
             'average_lifespan',
             'language',
             'home_world'
