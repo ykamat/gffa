@@ -142,7 +142,7 @@ class Species(models.Model):
         return self.name
 
 
-class Starships(models.Model):
+class Starship(models.Model):
     """ A starship i.e. Death Star """
 
     starship_id = models.AutoField(primary_key=True)
@@ -162,9 +162,9 @@ class Starships(models.Model):
 
     class Meta:
         managed = True
-        db_table = 'starships'
+        db_table = 'starship'
         ordering = ['name']
-        verbose_name = 'Starships'
+        verbose_name = 'Starship'
         verbose_name_plural = 'Starships'
 
     # def __unicode__(self):
