@@ -17,7 +17,7 @@ class FilmAdmin(admin.ModelAdmin):
         'release_date',
         'characters',
         'planets',
-        # 'starships',
+        'starships',
         # 'vehicles',
         'species'
     ]
@@ -32,7 +32,7 @@ class FilmAdmin(admin.ModelAdmin):
         'release_date',
         'get_characters',
         'get_planets',
-        # 'get_starships',
+        'get_starships',
         # 'get_vehicles',
         'get_species'
     ]

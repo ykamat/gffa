@@ -14,7 +14,7 @@ class Film(models.Model):
     release_date = models.DateField(blank=True, null=True)
     characters = models.ManyToManyField('Person', related_name="film_people", blank=True)
     planets = models.ManyToManyField('Planet', related_name="film_planets", blank=True)
-    # starships = models.ManyToManyField('Starship', related_name="film_starships", blank=True)
+    starships = models.ManyToManyField('Starship', related_name="film_starships", blank=True)
     # vehicles = models.ManyToManyField('Vehicle', related_name="film_vehicles", blank=True)
     species = models.ManyToManyField('Species', related_name="film_species", blank=True)
 
@@ -24,8 +24,8 @@ class Film(models.Model):
     def get_planets(self):
         return "\n".join([planet.url for planet in self.planets.all()])
 
-    # def get_starships(self):
-    #     return "\n".join([starship.url for starship in self.starships.all()])
+    def get_starships(self):
+        return "\n".join([starship.url for starship in self.starships.all()])
 
     # def get_vehicles(self):
     #     return "\n".join([vehicle.url for vehicle in self.vehicles.all()])
