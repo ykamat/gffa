@@ -12,11 +12,26 @@ class Film(models.Model):
     director = models.CharField(max_length=100, blank=True, null=True)
     producer = models.CharField(max_length=100, blank=True, null=True)
     release_date = models.DateField(blank=True, null=True)
-    people = models.ForeignKey('Person', related_name="film_people", on_delete=models.PROTECT, blank=True, null=True)
-    planets = models.ForeignKey('Planet', related_name="film_planets", on_delete=models.PROTECT, blank=True, null=True)
-    # starships = models.ForeignKey('Starship', related_name="film_starships", on_delete=models.PROTECT, blank=True, null=True)
-    # vehicles = models.ForeignKey('Vehicle', related_name="film_vehicles", on_delete=models.PROTECT, blank=True, null=True)
-    species = models.ForeignKey('Species', related_name="film_species", on_delete=models.PROTECT, blank=True, null=True)
+    characters = models.ManyToManyField('Person', related_name="film_people", blank=True)
+    planets = models.ManyToManyField('Planet', related_name="film_planets", blank=True)
+    # starships = models.ManyToManyField('Starship', related_name="film_starships", blank=True)
+    # vehicles = models.ManyToManyField('Vehicle', related_name="film_vehicles", blank=True)
+    species = models.ManyToManyField('Species', related_name="film_species", blank=True)
+
+    def get_characters(self):
+        return "\n".join([character.url for character in self.characters.all()])
+    
+    def get_planets(self):
+        return "\n".join([planet.url for planet in self.planets.all()])
+
+    # def get_starships(self):
+    #     return "\n".join([starship.url for starship in self.starships.all()])
+
+    # def get_vehicles(self):
+    #     return "\n".join([vehicle.url for vehicle in self.vehicles.all()])
+
+    def get_species(self):
+        return "\n".join([species.url for species in self.species.all()])
 
     class Meta:
         managed = True

@@ -63,7 +63,7 @@ class FilmSerializer(serializers.HyperlinkedModelSerializer):
             'species',
             # 'starships',
             # 'vehicles',
-            'people',
+            'characters',
             'planets',
             # 'url',
             # 'created',

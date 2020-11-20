@@ -15,7 +15,7 @@ class FilmAdmin(admin.ModelAdmin):
         'director',
         'producer',
         'release_date',
-        'people',
+        'characters',
         'planets',
         # 'starships',
         # 'vehicles',
@@ -30,11 +30,11 @@ class FilmAdmin(admin.ModelAdmin):
         'director',
         'producer',
         'release_date',
-        'people',
-        'planets',
-        # 'starships',
-        # 'vehicles',
-        'species'
+        'get_characters',
+        'get_planets',
+        # 'get_starships',
+        # 'get_vehicles',
+        'get_species'
     ]
 
     ordering = ['title']
