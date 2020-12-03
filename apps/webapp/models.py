@@ -12,26 +12,26 @@ class Film(models.Model):
     director = models.CharField(max_length=100, blank=True, null=True)
     producer = models.CharField(max_length=100, blank=True, null=True)
     release_date = models.DateField(blank=True, null=True)
-    characters = models.ManyToManyField('Person', related_name="film_people", blank=True)
-    planets = models.ManyToManyField('Planet', related_name="film_planets", blank=True)
-    starships = models.ManyToManyField('Starship', related_name="film_starships", blank=True)
+    characters = models.ManyToManyField('Person', through='FilmPerson', related_name='film_person', blank=True)
+    # planets = models.ManyToManyField('Planet', related_name="film_planets", blank=True)
+    # starships = models.ManyToManyField('Starship', related_name="film_starships", blank=True)
     # vehicles = models.ManyToManyField('Vehicle', related_name="film_vehicles", blank=True)
-    species = models.ManyToManyField('Species', related_name="film_species", blank=True)
+    # species = models.ManyToManyField('Species', related_name="film_species", blank=True)
 
     def get_characters(self):
-        return "\n".join([character.url for character in self.characters.all()])
+        return "\n".join([character.name for character in self.characters.all()])
     
-    def get_planets(self):
-        return "\n".join([planet.url for planet in self.planets.all()])
+    # def get_planets(self):
+    #     return "\n".join([planet.url for planet in self.planets.all()])
 
-    def get_starships(self):
-        return "\n".join([starship.url for starship in self.starships.all()])
+    # def get_starships(self):
+    #     return "\n".join([starship.url for starship in self.starships.all()])
 
     # def get_vehicles(self):
     #     return "\n".join([vehicle.url for vehicle in self.vehicles.all()])
 
-    def get_species(self):
-        return "\n".join([species.url for species in self.species.all()])
+    # def get_species(self):
+    #     return "\n".join([species.url for species in self.species.all()])
 
     class Meta:
         managed = True
@@ -198,3 +198,10 @@ class Vehicles(models.Model):
     
     def __str___(self):
         return self.name
+
+
+class FilmPerson(models.Model):
+    # film_person_id = models.AutoField(primary_key=True)
+    film = models.ForeignKey('Film', on_delete=models.CASCADE)
+    person = models.ForeignKey('Person', on_delete=models.CASCADE)
+    
