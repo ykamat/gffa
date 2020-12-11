@@ -8,42 +8,45 @@ class FilmAdmin(admin.ModelAdmin):
     """Film administration."""
 
     fields = [
-        'film_id',
         'title',
         'episode_id',
         'opening_crawl',
         'director',
         'producer',
         'release_date',
-        # 'characters',
-        # 'planets',
-        # 'starships',
-        # 'vehicles',
-        # 'species'
     ]
-
     list_display = [
-        'film_id',
         'title',
         'episode_id',
         'opening_crawl',
         'director',
         'producer',
         'release_date',
-        'get_characters',
-        # 'get_planets',
-        # 'get_starships',
-        # 'get_vehicles',
-        # 'get_species'
+        'film_characters',
+        # 'film_planets',
+        # 'film_species',
+        # 'film_starships',
+        # 'film_vehicles'
     ]
-
+    list_filter = ['title']
     filter_horizontal = [
         'characters',
+        # 'planets',
+        # 'species',
+        # 'starships',
+        # 'vehicles'
     ]
-
     ordering = ['title']
 
-    list_filter = ['title']
+
+@admin.register(FilmPerson)
+class FilmPersonAdmin(admin.ModelAdmin):
+    """FilmPerson administration."""
+
+    fields = ['film', 'person']
+    list_display = ['film', 'person']
+    list_filter = ['film']
+    ordering = ['film', 'person']
 
 
 @admin.register(Person)
@@ -62,7 +65,6 @@ class PersonAdmin(admin.ModelAdmin):
         'skin_color',
         'home_world'
     ]
-
     list_display = [
         'name',
         'species',
@@ -75,10 +77,8 @@ class PersonAdmin(admin.ModelAdmin):
         'skin_color',
         'home_world'
     ]
-
-    ordering = ['name']
-
     list_filter = ['name']
+    ordering = ['name']
 
 
 @admin.register(Planet)
@@ -130,7 +130,6 @@ class SpeciesAdmin(admin.ModelAdmin):
         'language',
         'home_world'
     ]
-
     list_display = [
         'name',
         'classification',
@@ -143,10 +142,8 @@ class SpeciesAdmin(admin.ModelAdmin):
         'language',
         'home_world'
     ]
-
-    ordering = ['name']
-
     list_filter = ['name']
+    ordering = ['name']
 
 
 @admin.register(Starship)
@@ -168,7 +165,6 @@ class StarshipAdmin(admin.ModelAdmin):
         'consumables',
         'pilots'
     ]
-
     list_display = [
         'starship_class',
         'manufacturer',
@@ -183,10 +179,8 @@ class StarshipAdmin(admin.ModelAdmin):
         'consumables',
         'pilots'
     ]
-
-    ordering = ['name']
-
     list_filter = ['name']
+    ordering = ['name']
 
 
 @admin.register(Vehicles)
@@ -205,7 +199,6 @@ class VehiclesAdmin(admin.ModelAdmin):
         'cargo_capacity',
         'consumables'
     ]
-
     list_display = [
         'name',
         'vehicle_class',
@@ -218,25 +211,5 @@ class VehiclesAdmin(admin.ModelAdmin):
         'cargo_capacity',
         'consumables'
     ]
-
-    ordering = ['name']
-
     list_filter = ['name']
-
-@admin.register(FilmPerson)
-class FilmPersonAdmin(admin.ModelAdmin):
-    """FilmPerson administration."""
-
-    fields = [
-        'film',
-        'person'
-    ]
-
-    list_display = [
-        'film',
-        'person'
-    ]
-
-    ordering = ['film', 'person']
-
-    list_filter = ['film']
+    ordering = ['name']
