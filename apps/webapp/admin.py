@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from . models import Person, Planet, Species, Film, Starship, Vehicles
+from . models import Person, Planet, Species, Film, Starship, Vehicle
 
 
 @admin.register(Film)
@@ -185,9 +185,9 @@ class StarshipAdmin(admin.ModelAdmin):
     list_filter = ['name']
 
 
-@admin.register(Vehicles)
-class VehiclesAdmin(admin.ModelAdmin):
-    """Vehicles administration."""
+@admin.register(Vehicle)
+class VehicleAdmin(admin.ModelAdmin):
+    """Vehicle administration."""
 
     fields = [
         'name',

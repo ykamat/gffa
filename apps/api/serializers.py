@@ -1,11 +1,11 @@
 from rest_framework import serializers
 
 from django.contrib.auth.models import User
-from apps.webapp.models import Person, Planet
+from apps.webapp.models import Person, Planet, Vehicle
 
 
 class PersonSerializer(serializers.HyperlinkedModelSerializer):
-    
+
     class Meta:
         model = Person
         fields = (
@@ -23,7 +23,7 @@ class PersonSerializer(serializers.HyperlinkedModelSerializer):
             # 'starships',
             # 'vehicles',
             'url',
-            # 'created',           
+            # 'created',
             # 'edited',
             )
 
@@ -47,4 +47,22 @@ class PlanetSerializer(serializers.HyperlinkedModelSerializer):
             # 'url',
             # 'created',
             # 'edited',
+        )
+
+
+class VehicleSerializer(serializers.HyperlinkedModelSerializer):
+
+    class Meta:
+        model = Vehicle
+        fields = (
+            'name',
+            'vehicle_class',
+            'manufacturer',
+            'length',
+            'cost_in_credits',
+            'crew',
+            'passengers',
+            'max_atmosphering_speed',
+            'cargo_capacity',
+            'consumables'
         )
