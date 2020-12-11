@@ -3,8 +3,8 @@ from rest_framework import viewsets, permissions
 from rest_framework.pagination import PageNumberPagination
 
 from django.contrib.auth.models import User
-from apps.webapp.models import Film, Person, Planet, Species
-from .serializers import FilmSerializer, PersonSerializer, PlanetSerializer, SpeciesSerializer
+from apps.webapp.models import Film, Person, Planet, Species, Vehicle
+from .serializers import FilmSerializer, PersonSerializer, PlanetSerializer, SpeciesSerializer, VehicleSerializer
 
 
 class FilmViewSet(viewsets.ModelViewSet):
@@ -54,6 +54,21 @@ class PlanetViewSet(viewsets.ModelViewSet):
 
         return queryset.order_by('planet_id')
 
+class VehicleViewSet(viewsets.ModelViewSet):
+    queryset = Vehicle.objects.all()
+    serializer_class = VehicleSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+
+    def get_queryset(self):
+        queryset = Vehicle.objects.all()
+        name = self.request.query_params.get('name', None)
+        manufacturer = self.request.query_params.get('manufacturer', None)
+        if name:
+            queryset = queryset.filter(name__contains=name)
+        if manufacturer:
+            queryset = queryset.filter(manufacturer__contains=manufacturer)
+
+        return queryset.order_by('vehicle_id')
 
 class SpeciesViewSet(viewsets.ModelViewSet):
     queryset = Species.objects.all()

@@ -1,7 +1,5 @@
 from django.contrib import admin
-
-from . models import Person, Planet, Species, Film, Starship, Vehicles, FilmPerson
-
+from . models import Person, Planet, Species, Film, Starship, Vehicle, FilmPerson
 
 @admin.register(Film)
 class FilmAdmin(admin.ModelAdmin):
@@ -183,9 +181,9 @@ class StarshipAdmin(admin.ModelAdmin):
     ordering = ['name']
 
 
-@admin.register(Vehicles)
-class VehiclesAdmin(admin.ModelAdmin):
-    """Vehicles administration."""
+@admin.register(Vehicle)
+class VehicleAdmin(admin.ModelAdmin):
+    """Vehicle administration."""
 
     fields = [
         'name',

@@ -186,10 +186,10 @@ class Starship(models.Model):
         return self.name
 
 
-class Vehicles(models.Model):
+class Vehicle(models.Model):
     """ A vehicle, i.e. Snowspeeder. """
 
-    vehicles_id = models.AutoField(primary_key=True)
+    vehicle_id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=40)
     vehicle_class = models.CharField(max_length=40, blank=True, null=True)
     manufacturer = models.CharField(max_length=40, blank=True, null=True)
@@ -203,12 +203,10 @@ class Vehicles(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'vehicles'
+        db_table = 'vehicle'
         ordering = ['name']
         verbose_name = 'Vehicle'
         verbose_name_plural = 'Vehicles'
-    
+
     def __str___(self):
         return self.name
-
-    

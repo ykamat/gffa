@@ -7,6 +7,7 @@ router = routers.DefaultRouter()
 router.register(r'films', views.FilmViewSet)
 router.register(r'people', views.PersonViewSet)
 router.register(r'planets', views.PlanetViewSet)
+router.register(r'vehicles', views.VehicleViewSet)
 router.register(r'species', views.SpeciesViewSet)
 
 urlpatterns = [
