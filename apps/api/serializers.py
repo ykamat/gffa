@@ -1,7 +1,7 @@
 from rest_framework import serializers
 
 from django.contrib.auth.models import User
-from apps.webapp.models import Film, Person, Planet, Species
+from apps.webapp.models import Film, Person, Planet, Species, FilmPerson
 
 
 class FilmSerializer(serializers.HyperlinkedModelSerializer):
@@ -18,7 +18,7 @@ class FilmSerializer(serializers.HyperlinkedModelSerializer):
             'species',
             # 'starships',
             # 'vehicles',
-            'people',
+            'characters',
             'planets',
             # 'url',
             # 'created',
@@ -89,4 +89,16 @@ class SpeciesSerializer(serializers.HyperlinkedModelSerializer):
             'average_lifespan',
             'language',
             'home_world'
+        }
+
+class FilmPersonSerializer(serializers.HyperlinkedModelSerializer):
+    id = serializers.ReadOnlyField(source='film.id')
+
+    class Meta:
+        model = FilmPerson
+
+        fields = {
+            # 'film_person_id',
+            'film',
+            'person',    
         }
