@@ -18,9 +18,9 @@ class Film(models.Model):
     # vehicles = models.ManyToManyField('Vehicle', related_name="film_vehicles", blank=True)
     # species = models.ManyToManyField('Species', related_name="film_species", blank=True)
 
-    def get_characters(self):
+    def film_characters(self):
         return "\n".join([character.name for character in self.characters.all()])
-    
+
     # def get_planets(self):
     #     return "\n".join([planet.url for planet in self.planets.all()])
 
@@ -34,7 +34,7 @@ class Film(models.Model):
     #     return "\n".join([species.url for species in self.species.all()])
 
     class Meta:
-        managed = True
+        managed = False
         db_table = 'film'
         ordering = ['title']
         verbose_name = 'Film'
@@ -49,6 +49,18 @@ class Film(models.Model):
     def __str__(self):
         return self.title
 
+
+class FilmPerson(models.Model):
+    film_person_id = models.AutoField(primary_key=True)
+    film = models.ForeignKey('Film', on_delete=models.CASCADE)
+    person = models.ForeignKey('Person', on_delete=models.CASCADE)
+
+    class Meta:
+        managed = False
+        db_table = 'film_person'
+        ordering = ['film', 'person']
+        verbose_name = 'Film Character'
+        verbose_name_plural = 'Film Characters'
 
 class Person(models.Model):
     """ A person i.e., Luke Skywalker. """
@@ -66,7 +78,7 @@ class Person(models.Model):
     home_world = models.ForeignKey('Planet', related_name="person_home_world", on_delete=models.PROTECT, blank=True, null=True)
 
     class Meta:
-        managed = True
+        managed = False
         db_table = 'person'
         ordering = ['name']
         verbose_name = 'Person'
@@ -97,7 +109,7 @@ class Planet(models.Model):
     population = models.CharField(max_length=40, blank=True, null=True)
 
     class Meta:
-        managed = True
+        managed = False
         db_table = 'planet'
         ordering = ['name']
         verbose_name = 'Planet'
@@ -126,7 +138,7 @@ class Species(models.Model):
     home_world = models.ForeignKey('Planet', related_name="species_home_world", on_delete=models.PROTECT, blank=True, null=True)
 
     class Meta:
-        managed = True
+        managed = False
         db_table = 'species'
         ordering = ['name']
         verbose_name = 'Species'
@@ -161,7 +173,7 @@ class Starship(models.Model):
     pilots = models.ForeignKey('Person', related_name='starship_person', on_delete=models.PROTECT, blank=True, null=True)
 
     class Meta:
-        managed = True
+        managed = False
         db_table = 'starship'
         ordering = ['name']
         verbose_name = 'Starship'
@@ -190,7 +202,7 @@ class Vehicles(models.Model):
     consumables = models.CharField(max_length=40, blank=True, null=True)
 
     class Meta:
-        managed = True
+        managed = False
         db_table = 'vehicles'
         ordering = ['name']
         verbose_name = 'Vehicle'
@@ -199,9 +211,4 @@ class Vehicles(models.Model):
     def __str___(self):
         return self.name
 
-
-class FilmPerson(models.Model):
-    # film_person_id = models.AutoField(primary_key=True)
-    film = models.ForeignKey('Film', on_delete=models.CASCADE)
-    person = models.ForeignKey('Person', on_delete=models.CASCADE)
     
