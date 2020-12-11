@@ -202,7 +202,7 @@ class Vehicle(models.Model):
     consumables = models.CharField(max_length=40, blank=True, null=True)
 
     class Meta:
-        managed = True
+        managed = False
         db_table = 'vehicle'
         ordering = ['name']
         verbose_name = 'Vehicle'
