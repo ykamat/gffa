@@ -13,7 +13,7 @@ class Film(models.Model):
     producer = models.CharField(max_length=100, blank=True, null=True)
     release_date = models.DateField(blank=True, null=True)
     characters = models.ManyToManyField('Person', through='FilmPerson', related_name='film_person', blank=True)
-    # planets = models.ManyToManyField('Planet', related_name="film_planets", blank=True)
+    planets = models.ManyToManyField('Planet', through='FilmPlanet', related_name='film_planet', blank=True)
     # starships = models.ManyToManyField('Starship', related_name="film_starships", blank=True)
     # vehicles = models.ManyToManyField('Vehicle', related_name="film_vehicles", blank=True)
     # species = models.ManyToManyField('Species', related_name="film_species", blank=True)
@@ -21,8 +21,8 @@ class Film(models.Model):
     def film_characters(self):
         return "\n".join([character.name for character in self.characters.all()])
 
-    # def get_planets(self):
-    #     return "\n".join([planet.url for planet in self.planets.all()])
+    def film_planets(self):
+        return "\n".join([planet.name for planet in self.planets.all()])
 
     # def get_starships(self):
     #     return "\n".join([starship.url for starship in self.starships.all()])
@@ -61,6 +61,20 @@ class FilmPerson(models.Model):
         ordering = ['film', 'person']
         verbose_name = 'Film Character'
         verbose_name_plural = 'Film Characters'
+
+
+class FilmPlanet(models.Model):
+    film_planet_id = models.AutoField(primary_key=True)
+    film = models.ForeignKey('Film', on_delete=models.CASCADE)
+    planet = models.ForeignKey('Planet', on_delete=models.CASCADE)
+
+    class Meta:
+        managed = False
+        db_table = 'film_planet'
+        ordering = ['film', 'planet']
+        verbose_name = 'Film Planet'
+        verbose_name_plural = 'Film Planets'
+
 
 class Person(models.Model):
     """ A person i.e., Luke Skywalker. """
