@@ -1,5 +1,5 @@
 from django.contrib import admin
-from . models import Person, Planet, Species, Film, Starship, Vehicle, FilmPerson
+from . models import Person, Planet, Species, Film, Starship, Vehicle, FilmPerson, FilmPlanet
 
 @admin.register(Film)
 class FilmAdmin(admin.ModelAdmin):
@@ -21,7 +21,7 @@ class FilmAdmin(admin.ModelAdmin):
         'producer',
         'release_date',
         'film_characters',
-        # 'film_planets',
+        'film_planets',
         # 'film_species',
         # 'film_starships',
         # 'film_vehicles'
@@ -29,7 +29,7 @@ class FilmAdmin(admin.ModelAdmin):
     list_filter = ['title']
     filter_horizontal = [
         'characters',
-        # 'planets',
+        'planets',
         # 'species',
         # 'starships',
         # 'vehicles'
@@ -45,6 +45,16 @@ class FilmPersonAdmin(admin.ModelAdmin):
     list_display = ['film', 'person']
     list_filter = ['film']
     ordering = ['film', 'person']
+
+
+@admin.register(FilmPlanet)
+class FilmPlanetAdmin(admin.ModelAdmin):
+    """FilmPlanet administration."""
+
+    fields = ['film', 'planet']
+    list_display = ['film', 'planet']
+    list_filter = ['film']
+    ordering = ['film', 'planet']
 
 
 @admin.register(Person)
