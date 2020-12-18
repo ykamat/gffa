@@ -61,6 +61,8 @@ class FilmPerson(models.Model):
         ordering = ['film', 'person']
         verbose_name = 'Film Character'
         verbose_name_plural = 'Film Characters'
+        unique_together = (('film', 'person'),)
+
 
 
 class FilmPlanet(models.Model):
@@ -74,6 +76,7 @@ class FilmPlanet(models.Model):
         ordering = ['film', 'planet']
         verbose_name = 'Film Planet'
         verbose_name_plural = 'Film Planets'
+        unique_together = (('film', 'planet'),)
 
 
 class Person(models.Model):
