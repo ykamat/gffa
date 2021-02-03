@@ -53,5 +53,6 @@ urlpatterns = [
     # path(r"^api/vehicles/schema$", "resources.schemas.vehicles"),
     # path(r"^api/starships/schema$", "resources.schemas.starships"),
     # path(r"^api/", include(router.urls)),
-    path('vehicles/', views.VehicleListView.as_view(), name='vehicles')
+    path('vehicles/', views.VehicleListView.as_view(), name='vehicles'),
+    path('planets/<int:pk>/planet_detail', views.PlanetDetailView.as_view(), name='planet_detail'),
 ]

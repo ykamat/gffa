@@ -1,0 +1,120 @@
+{% extends 'webapp/base.html' %}
+{% block mainbody %}
+
+    <article>
+        <header>
+        <h2>Planet Details</h2>
+        </header>
+
+        {% if planet_detail.name %}
+            <div class="row">
+                <div class="col-sm-2">
+                <p>Planet Name</p>
+                </div>
+                <div class="col-sm-10">
+                <p>{{ planet_detail.name }}</p>
+                </div>
+            </div>
+
+        {% endif %}
+
+        {% if planet_detail.rotation_period %}
+            <div class="row">
+                <div class="col-sm-2">
+                <p>Rotation Period</p>
+                </div>
+                <div class="col-sm-10">
+                <p>{{ planet_detail.rotation_period }}</p>
+                </div>
+            </div>
+
+        {% endif %}
+
+        {% if planet_detail.orbital_period %}
+            <div class="row">
+                <div class="col-sm-2">
+                <p>Orbital Period</p>
+                </div>
+                <div class="col-sm-10">
+                <p>{{ planet_detail.orbital_period }}</p>
+                </div>
+            </div>
+
+        {% endif %}
+
+        {% if planet_detail.diameter %}
+            <div class="row">
+                <div class="col-sm-2">
+                <p>Diameter</p>
+                </div>
+                <div class="col-sm-10">
+                <p>{{ planet_detail.diameter }}</p>
+                </div>
+            </div>
+
+        {% endif %}
+
+        {% if planet_detail.climate %}
+            <div class="row">
+                <div class="col-sm-2">
+                <p>climate</p>
+                </div>
+                <div class="col-sm-10">
+                <p>{{ planet_detail.climate }}</p>
+                </div>
+            </div>
+
+        {% endif %}
+
+        {% if planet_detail.gravity %}
+            <div class="row">
+                <div class="col-sm-2">
+                <p>Gravity</p>
+                </div>
+                <div class="col-sm-10">
+                <p>{{ planet_detail.gravity }}</p>
+                </div>
+            </div>
+
+        {% endif %}
+
+        {% if planet_detail.terrain %}
+            <div class="row">
+                <div class="col-sm-2">
+                <p>Terrain</p>
+                </div>
+                <div class="col-sm-10">
+                <p>{{ planet_detail.terrain }}</p>
+                </div>
+            </div>
+
+        {% endif %}
+
+        {% if planet_detail.surface_water %}
+            <div class="row">
+                <div class="col-sm-2">
+                <p>Surface Water</p>
+                </div>
+                <div class="col-sm-10">
+                <p>{{ planet_detail.surface_water }}</p>
+                </div>
+            </div>
+
+        {% endif %}
+
+        {% if planet_detail.population %}
+            <div class="row">
+                <div class="col-sm-2">
+                <p>Population</p>
+                </div>
+                <div class="col-sm-10">
+                <p>{{ planet_detail.population }}</p>
+                </div>
+            </div>
+
+        {% endif %}
+
+
+    </article>
+
+{% endblock mainbody %}
