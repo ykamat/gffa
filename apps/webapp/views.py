@@ -104,7 +104,7 @@ class VehicleListView(generic.ListView):
 
 class PlanetDetailView(generic.DetailView):
 	model = Planet
-	context_object_name = 'planet_detail'
+	context_object_name = 'planet'
 	template_name = 'webapp/planet_detail.html'
 
 	def get_queryset(self):

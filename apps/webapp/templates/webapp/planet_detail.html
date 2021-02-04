@@ -6,112 +6,103 @@
         <h2>Planet Details</h2>
         </header>
 
-        {% if planet_detail.name %}
+        {% if planet.name %}
             <div class="row">
                 <div class="col-sm-2">
                 <p>Planet Name</p>
                 </div>
                 <div class="col-sm-10">
-                <p>{{ planet_detail.name }}</p>
+                <p>{{ planet.name }}</p>
                 </div>
             </div>
-
         {% endif %}
 
-        {% if planet_detail.rotation_period %}
+        {% if planet.rotation_period %}
             <div class="row">
                 <div class="col-sm-2">
                 <p>Rotation Period</p>
                 </div>
                 <div class="col-sm-10">
-                <p>{{ planet_detail.rotation_period }}</p>
+                <p>{{ planet.rotation_period }}</p>
                 </div>
             </div>
-
         {% endif %}
 
-        {% if planet_detail.orbital_period %}
+        {% if planet.orbital_period %}
             <div class="row">
                 <div class="col-sm-2">
                 <p>Orbital Period</p>
                 </div>
                 <div class="col-sm-10">
-                <p>{{ planet_detail.orbital_period }}</p>
+                <p>{{ planet.orbital_period }}</p>
                 </div>
             </div>
-
         {% endif %}
 
-        {% if planet_detail.diameter %}
+        {% if planet.diameter %}
             <div class="row">
                 <div class="col-sm-2">
                 <p>Diameter</p>
                 </div>
                 <div class="col-sm-10">
-                <p>{{ planet_detail.diameter }}</p>
+                <p>{{ planet.diameter }}</p>
                 </div>
             </div>
-
         {% endif %}
 
-        {% if planet_detail.climate %}
+        {% if planet.climate %}
             <div class="row">
                 <div class="col-sm-2">
                 <p>climate</p>
                 </div>
                 <div class="col-sm-10">
-                <p>{{ planet_detail.climate }}</p>
+                <p>{{ planet.climate }}</p>
                 </div>
             </div>
-
         {% endif %}
 
-        {% if planet_detail.gravity %}
+        {% if planet.gravity %}
             <div class="row">
                 <div class="col-sm-2">
                 <p>Gravity</p>
                 </div>
                 <div class="col-sm-10">
-                <p>{{ planet_detail.gravity }}</p>
+                <p>{{ planet.gravity }}</p>
                 </div>
             </div>
-
         {% endif %}
 
-        {% if planet_detail.terrain %}
+        {% if planet.terrain %}
             <div class="row">
                 <div class="col-sm-2">
                 <p>Terrain</p>
                 </div>
                 <div class="col-sm-10">
-                <p>{{ planet_detail.terrain }}</p>
+                <p>{{ planet.terrain }}</p>
                 </div>
             </div>
-
         {% endif %}
 
-        {% if planet_detail.surface_water %}
+        {% if planet.surface_water %}
             <div class="row">
                 <div class="col-sm-2">
                 <p>Surface Water</p>
                 </div>
                 <div class="col-sm-10">
-                <p>{{ planet_detail.surface_water }}</p>
+                <p>{{ planet.surface_water }}</p>
                 </div>
             </div>
-
         {% endif %}
 
-        {% if planet_detail.population %}
+        {% if planet.population %}
             <div class="row">
                 <div class="col-sm-2">
                 <p>Population</p>
                 </div>
                 <div class="col-sm-10">
-                <p>{{ planet_detail.population }}</p>
+                <p>{{ planet.population }}</p>
                 </div>
             </div>
-
         {% endif %}
 
 
