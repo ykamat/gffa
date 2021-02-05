@@ -42,6 +42,7 @@ urlpatterns = [
     path('about/', views.AboutPageView.as_view(), name='about'),
     path('films/', views.FilmListView.as_view(), name='films'),
     path('people/', views.PersonListView.as_view(), name='people'),
+    path('people/<int:pk>/', views.PersonDetailView.as_view(), name='people_detail'),
     # path(r"^stats$", "swapi.views.stats"),
     # path(r"^stripe/donation", "swapi.views.stripe_donation"),
     # path(r"^api/people/schema$", "resources.schemas.people"),

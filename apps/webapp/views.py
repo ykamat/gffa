@@ -54,6 +54,14 @@ class PersonListView(generic.ListView):
 		return Person.objects.all()
 		# return Person.objects.select_related('homeworld').order_by('name')
 
+class PersonDetailView(generic.DetailView):
+	model = Person
+	context_object_name = 'persons'
+	template_name = 'webapp/people_detail.html'
+
+	def get_object(self):
+		person = super().get_object()
+		return person
 
 class PlanetListView(generic.ListView):
 	model = Planet
