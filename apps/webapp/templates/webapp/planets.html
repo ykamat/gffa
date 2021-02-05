@@ -11,7 +11,7 @@
             <div class="col-sm-12">
                 {% for planet in planets %}
                 <ul>
-                    <li>{{ planet.name }}</li>
+                    <li><a href="{% url 'planet_detail' planet.pk %}">{{ planet.name }}</a></li>
                 </ul>
                 {% endfor %}
             </div>

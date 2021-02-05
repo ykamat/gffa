@@ -112,8 +112,9 @@ class VehicleListView(generic.ListView):
 
 class PlanetDetailView(generic.DetailView):
 	model = Planet
-	context_object_name = 'planet'
+	context_object_name = 'planets'
 	template_name = 'webapp/planet_detail.html'
 
-	def get_queryset(self):
-		return Planet.objects.all()
+	def get_object(self):
+		planet = super().get_object()
+		return planet
