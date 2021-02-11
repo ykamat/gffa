@@ -57,7 +57,7 @@ class PersonListView(generic.ListView):
 class PersonDetailView(generic.DetailView):
 	model = Person
 	context_object_name = 'persons'
-	template_name = 'webapp/people_detail.html'
+	template_name = 'webapp/person_detail.html'
 
 	def get_object(self):
 		person = super().get_object()

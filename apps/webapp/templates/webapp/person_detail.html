@@ -1,7 +1,7 @@
 {% extends 'webapp/base.html' %}
 {% block mainbody %}
 
-{% if persons.name %}
+  {% if persons.name %}
     <div class="row">
       <div class="col-sm-2">
         <p>Name</p>
@@ -11,7 +11,7 @@
       </div>
     </div>
   {% endif %}
- 
+
   {% if persons.species %}
     <div class="row">
       <div class="col-sm-2">
@@ -110,4 +110,5 @@
       </div>
     </div>
   {% endif %}
-  {% endblock mainbody %}
+
+{% endblock mainbody %}
