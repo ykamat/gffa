@@ -101,6 +101,14 @@ class StarshipListView(generic.ListView):
 		return Starship.objects.all()
 		# return Starship.objects.select_related('?').order_by('?')
 
+class StarshipDetailView(generic.DetailView):
+	model = Starship
+	context_object_name = 'starships'
+	template_name = 'webapp/starship_detail.html'
+
+	def get_object(self):
+		starship = super().get_object()
+		return starship
 
 class VehicleListView(generic.ListView):
 	model = Vehicle
