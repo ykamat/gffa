@@ -1,0 +1,147 @@
+{% extends 'webapp/base.html' %}
+{% block mainbody %}
+
+    {% if starships.name %}
+        <div class="row">
+        <div class="col-sm-2">
+            <p>Name</p>
+        </div>
+        <div class="col-sm-10">
+            <p>{{ starships.name }}</p>
+        </div>
+        </div>
+    {% endif %}
+
+    {% if starships.starship_class %}
+        <div class="row">
+        <div class="col-sm-2">
+            <p>Starship Class</p>
+        </div>
+        <div class="col-sm-10">
+            <p>{{ starships.starship_class }}</p>
+        </div>
+        </div>
+    {% endif %}
+
+    {% if starships.manufacturer %}
+        <div class="row">
+        <div class="col-sm-2">
+            <p>Manufacturer</p>
+        </div>
+        <div class="col-sm-10">
+            <p>{{ starships.manufacturer }}</p>
+        </div>
+        </div>
+    {% endif %}
+
+    {% if starships.cost_in_credits %}
+        <div class="row">
+        <div class="col-sm-2">
+            <p>Cost in Credits</p>
+        </div>
+        <div class="col-sm-10">
+            <p>{{ starships.cost_in_credits }}</p>
+        </div>
+        </div>
+    {% endif %}
+
+    {% if starships.length %}
+        <div class="row">
+        <div class="col-sm-2">
+            <p>Length</p>
+        </div>
+        <div class="col-sm-10">
+            <p>{{ starships.length }}</p>
+        </div>
+        </div>
+    {% endif %}
+
+    {% if starships.crew %}
+        <div class="row">
+        <div class="col-sm-2">
+            <p>Crew</p>
+        </div>
+        <div class="col-sm-10">
+            <p>{{ starships.crew }}</p>
+        </div>
+        </div>
+    {% endif %}
+
+    {% if starships.passengers %}
+        <div class="row">
+        <div class="col-sm-2">
+            <p>Passengers</p>
+        </div>
+        <div class="col-sm-10">
+            <p>{{ starships.passengers }}</p>
+        </div>
+        </div>
+    {% endif %}
+
+    {% if starships.max_atmosphering_speed %}
+        <div class="row">
+        <div class="col-sm-2">
+            <p>Max Atmosphering Speed</p>
+        </div>
+        <div class="col-sm-10">
+            <p>{{ starships.max_atmosphering_speed }}</p>
+        </div>
+        </div>
+    {% endif %}
+
+    {% if starships.hyperdrive_rating %}
+        <div class="row">
+        <div class="col-sm-2">
+            <p>Hyperdrive Rating</p>
+        </div>
+        <div class="col-sm-10">
+            <p>{{ starships.hyperdrive_rating }}</p>
+        </div>
+        </div>
+    {% endif %}
+
+    {% if starships.MGLT %}
+        <div class="row">
+        <div class="col-sm-2">
+            <p>MGLT</p>
+        </div>
+        <div class="col-sm-10">
+            <p>{{ starships.MGLT }}</p>
+        </div>
+        </div>
+    {% endif %}
+
+    {% if starships.cargo_capacity %}
+        <div class="row">
+        <div class="col-sm-2">
+            <p>Cargo Capacity</p>
+        </div>
+        <div class="col-sm-10">
+            <p>{{ starships.cargo_capacity }}</p>
+        </div>
+        </div>
+    {% endif %}
+
+    {% if starships.consumables %}
+        <div class="row">
+        <div class="col-sm-2">
+            <p>Consumables</p>
+        </div>
+        <div class="col-sm-10">
+            <p>{{ starships.consumables }}</p>
+        </div>
+        </div>
+    {% endif %}
+
+    {% if starships.pilots %}
+        <div class="row">
+        <div class="col-sm-2">
+            <p>Pilots</p>
+        </div>
+        <div class="col-sm-10">
+            <p>{{ starships.pilots }}</p>
+        </div>
+        </div>
+    {% endif %}
+
+{% endblock mainbody %}
