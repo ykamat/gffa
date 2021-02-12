@@ -6,12 +6,12 @@
         <h2>Starship</h2>
         </header>
 
-        {% if starship %}
+        {% if starships %}
             <div class="row">
             <div class="col-sm-12">
                 <ul>
-                    {% for item in starship %}
-                        <li>{{ item.name }}</li>
+                    {% for starship in starships %}
+                        <li><a href="{% url 'starship_detail' starship.pk %}">{{ starship.name }}</a></li>
                     {% endfor %}
                 </ul>
             </div>
