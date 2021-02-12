@@ -9,11 +9,11 @@
         {% if persons %}
             <div class="row">
             <div class="col-sm-12">
-                {% for person in persons %}
                 <ul>
-                    <li><a href="{% url 'people_detail' person.person_id %}">{{ person.name }}</a></li>
+                    {% for person in persons %}
+                        <li><a href="{% url 'people_detail' person.person_id %}">{{ person.name }}</a></li>
+                    {% endfor %}
                 </ul>
-                {% endfor %}
             </div>
             </div>
         {% else %}

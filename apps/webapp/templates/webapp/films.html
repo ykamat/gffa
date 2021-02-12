@@ -9,11 +9,11 @@
         {% if films %}
             <div class="row">
             <div class="col-sm-12">
-                {% for film in films %}
                 <ul>
-                    <li>{{ film.title }}</li>
+                    {% for film in films %}
+                        <li>{{ film.title }}</li>
+                    {% endfor %}
                 </ul>
-                {% endfor %}
             </div>
             </div>
         {% else %}
