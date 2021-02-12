@@ -9,11 +9,11 @@
         {% if planets %}
             <div class="row">
             <div class="col-sm-12">
-                {% for planet in planets %}
                 <ul>
-                    <li><a href="{% url 'planet_detail' planet.pk %}">{{ planet.name }}</a></li>
+                    {% for planet in planets %}
+                        <li><a href="{% url 'planet_detail' planet.pk %}">{{ planet.name }}</a></li>
+                    {% endfor %}
                 </ul>
-                {% endfor %}
             </div>
             </div>
         {% else %}

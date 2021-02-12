@@ -9,11 +9,11 @@
         {% if vehicles %}
             <div class="row">
             <div class="col-sm-12">
-                {% for item in vehicles %}
                 <ul>
-                    <li>{{ item.name }}</li>
+                    {% for item in vehicles %}
+                        <li>{{ item.name }}</li>
+                    {% endfor %}
                 </ul>
-                {% endfor %}
             </div>
             </div>
         {% else %}

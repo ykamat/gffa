@@ -9,11 +9,11 @@
         {% if species %}
             <div class="row">
             <div class="col-sm-12">
-                {% for item in species %}
                 <ul>
-                    <li>{{ item.name }}</li>
+                    {% for item in species %}
+                        <li>{{ item.name }}</li>
+                    {% endfor %}
                 </ul>
-                {% endfor %}
             </div>
             </div>
         {% else %}
