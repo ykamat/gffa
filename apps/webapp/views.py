@@ -41,6 +41,16 @@ class FilmListView(generic.ListView):
 		# return Person.objects.select_related('homeworld').order_by('name')
 
 
+class PersonDetailView(generic.DetailView):
+	model = Person
+	context_object_name = 'persons'
+	template_name = 'webapp/person_detail.html'
+
+	def get_object(self):
+		person = super().get_object()
+		return person
+
+
 class PersonListView(generic.ListView):
 	model = Person
 	context_object_name = 'persons'
@@ -54,14 +64,15 @@ class PersonListView(generic.ListView):
 		return Person.objects.all()
 		# return Person.objects.select_related('homeworld').order_by('name')
 
-class PersonDetailView(generic.DetailView):
-	model = Person
-	context_object_name = 'persons'
-	template_name = 'webapp/person_detail.html'
+
+class PlanetDetailView(generic.DetailView):
+	model = Planet
+	context_object_name = 'planets'
+	template_name = 'webapp/planet_detail.html'
 
 	def get_object(self):
-		person = super().get_object()
-		return person
+		planet = super().get_object()
+		return planet
 
 class PlanetListView(generic.ListView):
 	model = Planet
@@ -91,6 +102,16 @@ class SpeciesListView(generic.ListView):
 		# return Species.objects.select_related('homeworld').order_by('name')
 
 
+class StarshipDetailView(generic.DetailView):
+	model = Starship
+	context_object_name = 'starships'
+	template_name = 'webapp/starship_detail.html'
+
+	def get_object(self):
+		starship = super().get_object()
+		return starship
+
+
 class StarshipListView(generic.ListView):
 	model = Starship
 	context_object_name = 'starships'
@@ -101,14 +122,6 @@ class StarshipListView(generic.ListView):
 		return Starship.objects.all()
 		# return Starship.objects.select_related('?').order_by('?')
 
-class StarshipDetailView(generic.DetailView):
-	model = Starship
-	context_object_name = 'starships'
-	template_name = 'webapp/starship_detail.html'
-
-	def get_object(self):
-		starship = super().get_object()
-		return starship
 
 class VehicleListView(generic.ListView):
 	model = Vehicle
@@ -117,12 +130,3 @@ class VehicleListView(generic.ListView):
 
 	def get_queryset(self):
 		return Vehicle.objects.all()
-
-class PlanetDetailView(generic.DetailView):
-	model = Planet
-	context_object_name = 'planets'
-	template_name = 'webapp/planet_detail.html'
-
-	def get_object(self):
-		planet = super().get_object()
-		return planet
