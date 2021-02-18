@@ -11,7 +11,7 @@
             <div class="col-sm-12">
                 <ul>
                     {% for person in persons %}
-                        <li><a href="{% url 'people_detail' person.pk %}">{{ person.name }}</a></li>
+                        <li><a href="{% url 'person_detail' person.pk %}">{{ person.name }}</a></li>
                     {% endfor %}
                 </ul>
             </div>
