@@ -99,7 +99,7 @@ class Person(models.Model):
         db_table = 'person'
         ordering = ['name']
         verbose_name = 'Person'
-        verbose_name_plural = 'People'
+        verbose_name_plural = 'Persons'
 
     # def get_absolute_url(self):
     #     return reverse('person_detail', args=[self.url])

@@ -3,7 +3,7 @@
     <div class="row">
         <div class="col-sm-2 col-lg-2 col-md-2">
             <h4>Statistics</h4>
-            <p>People: {{ people }}</p>
+            <p>Persons: {{ persons }}</p>
             <p>Planets: {{ planets }}</p>
             <p>Films: {{ films }}</p>
             <p>Species: {{ species }}</p>
@@ -18,7 +18,7 @@
                 of Star Wars data.</p>
 
             <p>After hours of watching films and trawling through content online, we present to you
-                all the <strong>People, Films, Species, Starships, Vehicles and Planets</strong>
+                all the <strong>Persons, Films, Species, Starships, Vehicles and Planets</strong>
                 from Star Wars.</p>
 
             <p>We've formatted this data in <a href="https://json.org"><strong>JSON</strong></a> and
@@ -41,12 +41,12 @@
         print(planet.name)
     </code></pre>
 
-            <p><em>View the people who have piloted more than one starship</em>:</p>
+            <p><em>View the individuals who have piloted more than one starship</em>:</p>
 
             <pre><code>import swapi
-    for people in swapi.get_all("people").iter():
-        if len(people.starships) &gt; 1:
-            print(people.name)
+    for persons in swapi.get_all("persons").iter():
+        if len(persons.starships) &gt; 1:
+            print(person.name)
     </code></pre>
 
             <p><em>Discover if Jar Jar Binks ruined a film just by being in it</em>:</p>
@@ -97,7 +97,7 @@
 
             <h2 id="contributors">Contributors</h2>
 
-            <p>SWAPI would not be possible without contributions from the following people:</p>
+            <p>SWAPI would not be possible without contributions from the following individuals:</p>
 
             <ul>
                 <li><a href="https://phalt.co">Paul Hallett</a></li>

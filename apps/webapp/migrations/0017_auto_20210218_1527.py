@@ -46,7 +46,7 @@ class Migration(migrations.Migration):
         ),
         migrations.AlterModelOptions(
             name='person',
-            options={'managed': False, 'ordering': ['name'], 'verbose_name': 'Person', 'verbose_name_plural': 'People'},
+            options={'managed': False, 'ordering': ['name'], 'verbose_name': 'Person', 'verbose_name_plural': 'Persons'},
         ),
         migrations.AlterModelOptions(
             name='planet',

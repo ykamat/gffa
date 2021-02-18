@@ -20,7 +20,7 @@
             <h5>Resources</h5>
             <ul class="list-group">
                 <li class="list-group-item"><a href="#root">Root</a></li>
-                <li class="list-group-item"><a href="#people">People</a></li>
+                <li class="list-group-item"><a href="#persons">Persons</a></li>
                 <li class="list-group-item"><a href="#films">Films</a></li>
                 <li class="list-group-item"><a href="#starships">Starships</a></li>
                 <li class="list-group-item"><a href="#vehicles">Vehicles</a></li>
@@ -75,8 +75,8 @@ Content-Type: application/json
     "orbital_period": "304",
     "population": "200000",
     "residents": [
-        "https://swapi.py4e.com/api/people/1/",
-        "https://swapi.py4e.com/api/people/2/",
+        "https://swapi.py4e.com/api/persons/1/",
+        "https://swapi.py4e.com/api/persons/2/",
         ...
     ],
     "rotation_period": "23",
@@ -120,7 +120,7 @@ Content-Type: application/json
             <h3 id="searching">Searching</h3>
             <p>All resources support a <code>search</code> parameter that filters the set of
                 resources returned. This allows you to make queries like:</p>
-            <pre><code>https://swapi.py4e.com/api/people/?search=r2</code></pre>
+            <pre><code>https://swapi.py4e.com/api/persons/?search=r2</code></pre>
             <p>All searches will use case-insensitive partial matches on the set of search fields.
                 To see the set of search fields for each resource, check out the individual resource
                 documentation. For more information on advanced search terms see <a
@@ -151,7 +151,7 @@ Content-Type: application/json
 Content-Type: application/json
 {
     "films": "https://swapi.py4e.com/api/films/",
-    "people": "https://swapi.py4e.com/api/people/",
+    "persons": "https://swapi.py4e.com/api/persons/",
     "planets": "https://swapi.py4e.com/api/planets/",
     "species": "https://swapi.py4e.com/api/species/",
     "starships": "https://swapi.py4e.com/api/starships/",
@@ -162,8 +162,8 @@ Content-Type: application/json
                 <li><code>films</code> <em>string</em>
                     -- The URL root for Film resources
                 </li>
-                <li><code>people</code> <em>string</em>
-                    -- The URL root for People resources
+                <li><code>persons</code> <em>string</em>
+                    -- The URL root for Person resources
                 </li>
                 <li><code>planets</code> <em>string</em>
                     -- The URL root for Planet resources
@@ -179,18 +179,18 @@ Content-Type: application/json
                 </li>
             </ul>
             <hr/>
-            <p><a name="people"></a></p>
-            <h3 id="people">People</h3>
-            <p>A People resource is an individual person or character within the Star Wars
+            <p><a name="persons"></a></p>
+            <h3 id="persons">Persons</h3>
+            <p>A Person resource is an individual person or character within the Star Wars
                 universe.</p>
             <p><strong>Endpoints</strong></p>
             <ul>
-                <li><code>/people/</code> -- get all the people resources</li>
-                <li><code>/people/:id/</code> -- get a specific people resource</li>
-                <li><code>/people/schema/</code> -- view the JSON schema for this resource</li>
+                <li><code>/persons/</code> -- get all person resources</li>
+                <li><code>/persons/:id/</code> -- get a specific person resource</li>
+                <li><code>/persons/schema/</code> -- view the JSON schema for this resource</li>
             </ul>
             <p><strong>Example request:</strong></p>
-            <pre><code>http https://swapi.py4e.com/api/people/1/</code></pre>
+            <pre><code>http https://swapi.py4e.com/api/persons/1/</code></pre>
             <p><strong>Example response:</strong></p>
             <pre><code>HTTP/1.0 200 OK
 Content-Type: application/json
@@ -217,7 +217,7 @@ Content-Type: application/json
         "https://swapi.py4e.com/api/starships/12/",
         ...
     ],
-    "url": "https://swapi.py4e.com/api/people/1/",
+    "url": "https://swapi.py4e.com/api/persons/1/",
     "vehicles": [
         "https://swapi.py4e.com/api/vehicles/14/"
         ...
@@ -302,7 +302,7 @@ Content-Type: application/json
 Content-Type: application/json
 {
     "characters": [
-        "https://swapi.py4e.com/api/people/1/",
+        "https://swapi.py4e.com/api/persons/1/",
         ...
     ],
     "created": "2014-12-10T14:23:31.880000Z",
@@ -361,7 +361,7 @@ Content-Type: application/json
                     -- An array of vehicle resource URLs that are in this film.
                 </li>
                 <li><code>characters</code> <em>array</em>
-                    -- An array of people resource URLs that are in this film.
+                    -- An array of person resource URLs that are in this film.
                 </li>
                 <li><code>planets</code> <em>array</em>
                     -- An array of planet resource URLs that are in this film.
@@ -443,7 +443,7 @@ Content-Type: application/json
                     -- The number of personnel needed to run or pilot this starship.
                 </li>
                 <li><code>passengers</code> <em>string</em>
-                    -- The number of non-essential people this starship can transport.
+                    -- The number of non-essential individuals that this starship can transport.
                 </li>
                 <li><code>max_atmosphering_speed</code> <em>string</em>
                     -- The maximum speed of this starship in the atmosphere. "N/A" if this starship
@@ -470,7 +470,7 @@ Content-Type: application/json
                     -- An array of Film URL Resources that this starship has appeared in.
                 </li>
                 <li><code>pilots</code> <em>array</em>
-                    -- An array of People URL Resources that this starship has been piloted by.
+                    -- An array of Person URL Resources that this starship has been piloted by.
                 </li>
                 <li><code>url</code> <em>string</em>
                     -- the hypermedia URL of this resource.
@@ -549,7 +549,7 @@ Content-Type: application/json
                     -- The number of personnel needed to run or pilot this vehicle.
                 </li>
                 <li><code>passengers</code> <em>string</em>
-                    -- The number of non-essential people this vehicle can transport.
+                    -- The number of non-essential individuals that this vehicle can transport.
                 </li>
                 <li><code>max_atmosphering_speed</code> <em>string</em>
                     -- The maximum speed of this vehicle in the atmosphere.
@@ -565,7 +565,7 @@ Content-Type: application/json
                     -- An array of Film URL Resources that this vehicle has appeared in.
                 </li>
                 <li><code>pilots</code> <em>array</em>
-                    -- An array of People URL Resources that this vehicle has been piloted by.
+                    -- An array of Person URL Resources that this vehicle has been piloted by.
                 </li>
                 <li><code>url</code> <em>string</em>
                     -- the hypermedia URL of this resource.
@@ -611,7 +611,7 @@ Content-Type: application/json
     "language": "Shyriiwook",
     "name": "Wookie",
     "people": [
-        "https://swapi.py4e.com/api/people/13/"
+        "https://swapi.py4e.com/api/persons/13/"
     ],
     "films": [
         "https://swapi.py4e.com/api/films/1/",
@@ -655,8 +655,8 @@ Content-Type: application/json
                 <li><code>homeworld</code> <em>string</em>
                     -- The URL of a planet resource, a planet that this species originates from.
                 </li>
-                <li><code>people</code> <em>array</em>
-                    -- An array of People URL Resources that are a part of this species.
+                <li><code>persons</code> <em>array</em>
+                    -- An array of Person URL Resources that are a part of this species.
                 </li>
                 <li><code>films</code> <em>array</em>
                     -- An array of Film URL Resources that this species has appeared in.
@@ -705,7 +705,7 @@ Content-Type: application/json
     "orbital_period": "304",
     "population": "120000",
     "residents": [
-        "https://swapi.py4e.com/api/people/1/",
+        "https://swapi.py4e.com/api/persons/1/",
         ...
     ],
     "rotation_period": "23",
@@ -747,7 +747,7 @@ Content-Type: application/json
                     bodies of water.
                 </li>
                 <li><code>residents</code> <em>array</em>
-                    -- An array of People URL Resources that live on this planet.
+                    -- An array of Person URL Resources that live on this planet.
                 </li>
                 <li><code>films</code> <em>array</em>
                     -- An array of Film URL Resources that this planet has appeared in.
