@@ -3,84 +3,89 @@
 {% load static %}
 
 <html lang="en">
-  <head>
+<head>
     <meta charset="utf-8">
     <meta name="description" content="GFFA webapp">
     <meta name="keywords" content="UMSI,UMPY,API,Django,Bootstrap">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+          crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'css/gffa.css' %}">
     <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}">
 
     <title>{% block title %}GFFA - The Star Wars API{% endblock title %}</title>
-  </head>
+</head>
 
-  <body>
-    <nav class="navbar navbar-expand-md">
-        <!--
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-
-          <div class="navbar-brand" href="#">
-            <a href="https://twitter.com/share" class="twitter-share-button" data-url="https://swapi.py4e.com" data-text="SWAPI - the Star Wars API " data-via="phalt_" data-related="phalt_">Tweet</a>
-            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-          </div>
-        </div>
-        -->
-
-      <a class="navbar-brand" href="/">LOGO</a> <!--TODO: add logo -->
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+<body>
+<nav class="navbar navbar-expand-md">
+    <!--
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
       </button>
 
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'about' %}">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'docs' %}">Documentation</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'films' %}">Films</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'people' %}">People</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'planets' %}">Planets</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'species' %}">Species</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'starships' %}">Starships</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'vehicles' %}">Vehicles</a>
-          </li>
-        </ul>
+      <div class="navbar-brand" href="#">
+        <a href="https://twitter.com/share" class="twitter-share-button" data-url="https://swapi.py4e.com" data-text="SWAPI - the Star Wars API " data-via="phalt_" data-related="phalt_">Tweet</a>
+        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
       </div>
-    </nav>
+    </div>
+    -->
 
-    <main>
-      <div class="container-fluid" style="margin-top: 60px;">
+    <a class="navbar-brand" href="/">LOGO</a> <!--TODO: add logo -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
 
-      <!-- Removed jumbotron row -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'about' %}">About</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'docs' %}">Documentation</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'films' %}">Films</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'people' %}">People</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'planets' %}">Planets</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'species' %}">Species</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'starships' %}">Starships</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'vehicles' %}">Vehicles</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<main>
+    <div class="container-fluid" style="margin-top: 60px;">
+
+        <!-- Removed jumbotron row -->
 
         <div class="jumbotron jumbotron-fluid">
-          <div class="container-fluid">
-            <div class="center yellow">
-                <h1 class="display-4">A Galaxy Far, Far Away</h1>
-                <p class="lead">A Star Wars API</p>
+            <div class="container-fluid">
+                <div class="center yellow">
+                    <h1 class="display-4">A Galaxy Far, Far Away</h1>
+                    <p class="lead">A Star Wars API</p>
+                </div>
             </div>
-          </div>
         </div>
 
         <!--
@@ -99,36 +104,55 @@
 
         <!-- Update Google Analytics -->
         <script>
-          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-          ga('create', 'UA-53299289-3', 'auto');
-          ga('send', 'pageview');
+            (function (i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r;
+                i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date();
+                a = s.createElement(o),
+                    m = s.getElementsByTagName(o)[0];
+                a.async = 1;
+                a.src = g;
+                m.parentNode.insertBefore(a, m)
+            })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+            ga('create', 'UA-53299289-3', 'auto');
+            ga('send', 'pageview');
         </script>
 
-      </div> <!-- /.container-fluid -->
-    </main>
+    </div> <!-- /.container-fluid -->
+</main>
 
-    <footer>
-      <div class="container-fluid">
+<footer>
+    <div class="container-fluid">
         <div class="row">
-          <div class="col-sm">
-            &copy; <script type="text/javascript">document.write(new Date().getFullYear());</script> Anthony Whyte
-          </div>
-          <div class="col-sm">
+            <div class="col-sm">
+                &copy;
+                <script type="text/javascript">document.write(new Date().getFullYear());</script>
+                Anthony Whyte
+            </div>
+            <div class="col-sm">
             <span class="float-right">
-              <a href="https://twitter.com/arwhyte?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">@arwhyte</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-              <a class="github-button" href="https://github.com/arwhyte" aria-label="Follow @arwhyte on GitHub">Follow @arwhyte</a>
+              <a href="https://twitter.com/arwhyte?ref_src=twsrc%5Etfw"
+                 class="twitter-follow-button" data-show-count="false">@arwhyte</a><script async
+                                                                                           src="https://platform.twitter.com/widgets.js"
+                                                                                           charset="utf-8"></script>
+              <a class="github-button" href="https://github.com/arwhyte"
+                 aria-label="Follow @arwhyte on GitHub">Follow @arwhyte</a>
             </span>
-          </div>
-      </div>
-    </footer>
+            </div>
+        </div>
+</footer>
 
-    <script async defer src="https://buttons.github.io/buttons.js"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
 
-  </body>
+</body>
 </html>

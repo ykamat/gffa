@@ -2,23 +2,25 @@
 {% block mainbody %}
 
     <article>
+
         <header>
-        <h2>Vehicles</h2>
+            <h2>Vehicles</h2>
         </header>
 
         {% if vehicles %}
             <div class="row">
-            <div class="col-sm-12">
-                <ul>
-                    {% for item in vehicles %}
-                        <li>{{ item.name }}</li>
-                    {% endfor %}
-                </ul>
-            </div>
+                <div class="col-sm-12">
+                    <ul>
+                        {% for item in vehicles %}
+                            <li>{{ item.name }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
             </div>
         {% else %}
             <p>No Vehicles are available to view.</p>
         {% endif %}
+
     </article>
 
 {% endblock mainbody %}

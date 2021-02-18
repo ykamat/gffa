@@ -2,23 +2,25 @@
 {% block mainbody %}
 
     <article>
+
         <header>
-        <h2>Films</h2>
+            <h2>Films</h2>
         </header>
 
         {% if films %}
             <div class="row">
-            <div class="col-sm-12">
-                <ul>
-                    {% for film in films %}
-                        <li>{{ film.title }}</li>
-                    {% endfor %}
-                </ul>
-            </div>
+                <div class="col-sm-12">
+                    <ul>
+                        {% for film in films %}
+                            <li>{{ film.title }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
             </div>
         {% else %}
             <p>No Films are available to view.</p>
         {% endif %}
+
     </article>
 
 {% endblock mainbody %}

@@ -2,23 +2,27 @@
 {% block mainbody %}
 
     <article>
+
         <header>
-        <h2>Starship</h2>
+            <h2>Starship</h2>
         </header>
 
         {% if starships %}
             <div class="row">
-            <div class="col-sm-12">
-                <ul>
-                    {% for starship in starships %}
-                        <li><a href="{% url 'starship_detail' starship.pk %}">{{ starship.name }}</a></li>
-                    {% endfor %}
-                </ul>
-            </div>
+                <div class="col-sm-12">
+                    <ul>
+                        {% for starship in starships %}
+                            <li>
+                                <a href="{% url 'starship_detail' starship.pk %}">{{ starship.name }}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
             </div>
         {% else %}
             <p>No Starship are available to view.</p>
         {% endif %}
+
     </article>
 
 {% endblock mainbody %}

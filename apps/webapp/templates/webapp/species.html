@@ -2,23 +2,25 @@
 {% block mainbody %}
 
     <article>
+
         <header>
-        <h2>Species</h2>
+            <h2>Species</h2>
         </header>
 
         {% if species %}
             <div class="row">
-            <div class="col-sm-12">
-                <ul>
-                    {% for item in species %}
-                        <li>{{ item.name }}</li>
-                    {% endfor %}
-                </ul>
-            </div>
+                <div class="col-sm-12">
+                    <ul>
+                        {% for single_species in species %}
+                            <li>{{ single_species.name }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
             </div>
         {% else %}
             <p>No Species are available to view.</p>
         {% endif %}
+
     </article>
 
 {% endblock mainbody %}
