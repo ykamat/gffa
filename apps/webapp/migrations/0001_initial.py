@@ -27,7 +27,7 @@ class Migration(migrations.Migration):
             ],
             options={
                 'verbose_name': 'Person',
-                'verbose_name_plural': 'People',
+                'verbose_name_plural': 'Persons',
                 'db_table': 'person',
                 'ordering': ['name'],
                 'managed': True,

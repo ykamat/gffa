@@ -11,7 +11,7 @@ from . import views
 # admin.autodiscover()
 # router = routers.DefaultRouter()
 
-# router.register(r"people", resource_views.PeopleViewSet)
+# router.register(r"persons", resource_views.PersonViewSet)
 # router.register(r"planets", resource_views.PlanetViewSet)
 # router.register(r"films", resource_views.FilmViewSet)
 # router.register(r"species", resource_views.SpeciesViewSet)
@@ -26,7 +26,7 @@ from . import views
 #     url(r"^about$", "swapi.views.about"),
 #     url(r"^stats$", "swapi.views.stats"),
 #     url(r"^stripe/donation", "swapi.views.stripe_donation"),
-#     url(r"^api/people/schema$", "resources.schemas.people"),
+#     url(r"^api/persons/schema$", "resources.schemas.persons"),
 #     url(r"^api/planets/schema$", "resources.schemas.planets"),
 #     url(r"^api/films/schema$", "resources.schemas.films"),
 #     url(r"^api/species/schema$", "resources.schemas.species"),
@@ -41,11 +41,11 @@ urlpatterns = [
     path('docs/', views.DocsPageView.as_view(), name='docs'),
     path('about/', views.AboutPageView.as_view(), name='about'),
     path('films/', views.FilmListView.as_view(), name='films'),
-    path('people/', views.PersonListView.as_view(), name='people'),
-    path('people/<int:pk>/', views.PersonDetailView.as_view(), name='person_detail'),
+    path('persons/', views.PersonListView.as_view(), name='persons'),
+    path('persons/<int:pk>/', views.PersonDetailView.as_view(), name='person_detail'),
     # path(r"^stats$", "swapi.views.stats"),
     # path(r"^stripe/donation", "swapi.views.stripe_donation"),
-    # path(r"^api/people/schema$", "resources.schemas.people"),
+    # path(r"^api/persons/schema$", "resources.schemas.persons"),
     # path(r"^api/planets/schema$", "resources.schemas.planets"),
     # path(r"^api/films/schema$", "resources.schemas.films"),
     path('planets/', views.PlanetListView.as_view(), name='planets'),
@@ -53,9 +53,8 @@ urlpatterns = [
     path('species/', views.SpeciesListView.as_view(), name='species'),
     path('starships/', views.StarshipListView.as_view(), name='starships'),
     path('starships/<int:pk>/', views.StarshipDetailView.as_view(), name='starship_detail'),
+    path('vehicles/', views.VehicleListView.as_view(), name='vehicles'),
     # path(r"^api/vehicles/schema$", "resources.schemas.vehicles"),
     # path(r"^api/starships/schema$", "resources.schemas.starships"),
     # path(r"^api/", include(router.urls)),
-    path('vehicles/', views.VehicleListView.as_view(), name='vehicles'),
-    
 ]

@@ -5,7 +5,7 @@
         </div>
         <div class="col-lg-6 center">
             <p>All the Star Wars data you've ever wanted:</p>
-            <p><b>Planets, Spaceships, Vehicles, People, Films and Species</b></p>
+            <p><b>Planets, Spaceships, Vehicles, Persons, Films and Species</b></p>
             <p>From all <b>SEVEN</b> Star Wars films</p>
             <p><h4>Now with The Force Awakens data!</h4></p>
         </div>
@@ -23,11 +23,11 @@
             </h1>
             <div class="input-group">
                 <span class="input-group-addon">https://swapi.py4e.com/api/</span>
-                <input id="interactive" type="text" class="form-control" placeholder="people/1/">
+                <input id="interactive" type="text" class="form-control" placeholder="persons/1/">
                 <span class="input-group-btn"><button onClick="interactive_call();return false;"
                                                       class="btn btn-primary">request</button></span>
             </div>
-            <small>Need a hint? try <a href="#" onClick="update('people/1/');return false;"><i>people/1/</i></a>
+            <small>Need a hint? try <a href="#" onClick="update('persons/1/');return false;"><i>persons/1/</i></a>
                 or <a href="#" onClick="update('planets/3/');return false;"><i>planets/3/</i></a> or
                 <a href="#"
                    onClick="update('starships/9/');return false;"><i>starships/9/</i></a></small>
@@ -64,7 +64,7 @@
 	],
 	"created": "2014-12-09T13:50:51.644000Z",
 	"edited": "2014-12-20T21:17:56.891000Z",
-	"url": "https://swapi.py4e.com/api/people/1/"
+	"url": "https://swapi.py4e.com/api/persons/1/"
 }
           </pre>
             </div>
@@ -108,7 +108,7 @@
         function interactive_call() {
             var content = jQuery('#interactive').val()
             if (content == '') {
-                content = 'people/1/';
+                content = 'persons/1/';
             }
             var call_url = 'api/' + content;
             jQuery.ajax({

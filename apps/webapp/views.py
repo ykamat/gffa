@@ -54,7 +54,7 @@ class PersonDetailView(generic.DetailView):
 class PersonListView(generic.ListView):
 	model = Person
 	context_object_name = 'persons'
-	template_name = 'webapp/people.html'
+	template_name = 'webapp/persons.html'
 	# paginate_by = 20
 
 	# def dispatch(self, *args, **kwargs):
