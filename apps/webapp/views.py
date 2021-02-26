@@ -26,6 +26,13 @@ class AboutPageView(generic.TemplateView):
 class DocsPageView(generic.TemplateView):
 	template_name = 'webapp/docs.html'
 
+class FilmDetailView(generic.DetailView):
+	model = Film
+	context_object_name = 'films'
+	template_name = 'webapp/film_detail.html'
+
+	def get_object(self):
+		return super().get_object()
 
 class FilmListView(generic.ListView):
 	model = Film
@@ -40,14 +47,6 @@ class FilmListView(generic.ListView):
 		return Film.objects.all()
 		# return Person.objects.select_related('homeworld').order_by('name')
 
-class FilmDetailView(generic.DetailView):
-	model = Film
-	context_object_name = 'films'
-	template_name = 'webapp/film_detail.html'
-
-	def get_object(self):
-		return super().get_object()
-
 class PersonDetailView(generic.DetailView):
 	model = Person
 	context_object_name = 'persons'
@@ -56,7 +55,6 @@ class PersonDetailView(generic.DetailView):
 	def get_object(self):
 		person = super().get_object()
 		return person
-
 
 class PersonListView(generic.ListView):
 	model = Person
