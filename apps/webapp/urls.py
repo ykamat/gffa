@@ -51,6 +51,7 @@ urlpatterns = [
     path('planets/', views.PlanetListView.as_view(), name='planets'),
     path('planets/<int:pk>/', views.PlanetDetailView.as_view(), name='planet_detail'),
     path('species/', views.SpeciesListView.as_view(), name='species'),
+    path('species/<int:pk>/', views.SpeciesDetailView.as_view(), name='species_detail'),
     path('starships/', views.StarshipListView.as_view(), name='starships'),
     path('starships/<int:pk>/', views.StarshipDetailView.as_view(), name='starship_detail'),
     path('vehicles/', views.VehicleListView.as_view(), name='vehicles'),
