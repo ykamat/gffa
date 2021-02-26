@@ -12,7 +12,8 @@
                 <div class="col-sm-12">
                     <ul>
                         {% for single_species in species %}
-                            <li>{{ single_species.name }}</li>
+                            <li><a href="{% url 'species_detail' single_species.pk %}">{{ single_species.name }}</a>
+                            </li>
                         {% endfor %}
                     </ul>
                 </div>

@@ -1,0 +1,114 @@
+{% extends 'webapp/base.html' %}
+{% block mainbody %}
+
+    {% if species.name %}
+        <div class="row">
+            <div class="col-sm-2">
+                <p>Name</p>
+            </div>
+            <div class="col-sm-10">
+                <p>{{ species.name }}</p>
+            </div>
+        </div>
+    {% endif %}
+
+    {% if species.classification %}
+        <div class="row">
+            <div class="col-sm-2">
+                <p>Classification</p>
+            </div>
+            <div class="col-sm-10">
+                <p>{{ species.classification }}</p>
+            </div>
+        </div>
+    {% endif %}
+
+    {% if species.designation %}
+        <div class="row">
+            <div class="col-sm-2">
+                <p>Designation</p>
+            </div>
+            <div class="col-sm-10">
+                <p>{{ species.designation }}</p>
+            </div>
+        </div>
+    {% endif %}
+
+    {% if species.average_height %}
+        <div class="row">
+            <div class="col-sm-2">
+                <p>Average Height</p>
+            </div>
+            <div class="col-sm-10">
+                <p>{{ species.average_height }}</p>
+            </div>
+        </div>
+    {% endif %}
+
+    {% if species.skin_colors %}
+        <div class="row">
+            <div class="col-sm-2">
+                <p>Skin Colors</p>
+            </div>
+            <div class="col-sm-10">
+                <p>{{ species.skin_colors }} cm</p>
+            </div>
+        </div>
+    {% endif %}
+
+    {% if species.hair_colors %}
+        <div class="row">
+            <div class="col-sm-2">
+                <p>Hair Colors</p>
+            </div>
+            <div class="col-sm-10">
+                <p>{{ species.hair_colors }}</p>
+            </div>
+        </div>
+    {% endif %}
+
+    {% if species.eye_colors %}
+        <div class="row">
+            <div class="col-sm-2">
+                <p>Eye Colors</p>
+            </div>
+            <div class="col-sm-10">
+                <p>{{ species.eye_colors }}</p>
+            </div>
+        </div>
+    {% endif %}
+
+    {% if species.average_lifespan %}
+        <div class="row">
+            <div class="col-sm-2">
+                <p>Average Lifespan</p>
+            </div>
+            <div class="col-sm-10">
+                <p>{{ species.average_lifespan }}</p>
+            </div>
+        </div>
+    {% endif %}
+
+    {% if species.language %}
+        <div class="row">
+            <div class="col-sm-2">
+                <p>Language</p>
+            </div>
+            <div class="col-sm-10">
+                <p>{{ species.language }}</p>
+            </div>
+        </div>
+    {% endif %}
+
+    {% if species.home_world %}
+        <div class="row">
+            <div class="col-sm-2">
+                <p>Home World</p>
+            </div>
+            <div class="col-sm-10">
+                <p>{{ species.home_world }}</p>
+            </div>
+        </div>
+    {% endif %}
+
+{% endblock mainbody %}
