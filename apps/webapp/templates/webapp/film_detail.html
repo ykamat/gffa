@@ -1,0 +1,101 @@
+{% extends 'webapp/base.html' %}
+{% block mainbody %}
+
+<!-- <header>
+    <div class="row">
+        <div class="col-xs-1">
+            &nbsp;<a class="btn btn-outline-secondary" href="{{request.META.HTTP_REFERER}}">back</a>
+          </div>
+    </div>
+</header> -->
+
+
+    {% if films.title %}
+        <div class="row">
+            <div class="col-sm-2">
+                <p>Title</p>
+            </div>
+            <div class="col-sm-10">
+                <p>{{ films.title }}</p>
+            </div>
+        </div>
+    {% endif %}
+
+    {% if films.episode_id %}
+        <div class="row">
+            <div class="col-sm-2">
+                <p>Episode ID</p>
+            </div>
+            <div class="col-sm-10">
+                <p>{{ films.episode_id }}</p>
+            </div>
+        </div>
+    {% endif %}
+
+    {% if films.opening_crawl %}
+        <div class="row">
+            <div class="col-sm-2">
+                <p>Opening Crawl</p>
+            </div>
+            <div class="col-sm-10">
+                <p>{{ films.opening_crawl }}</p>
+            </div>
+        </div>
+    {% endif %}
+
+    {% if films.director %}
+        <div class="row">
+            <div class="col-sm-2">
+                <p>Director</p>
+            </div>
+            <div class="col-sm-10">
+                <p>{{ films.director }}</p>
+            </div>
+        </div>
+    {% endif %}
+
+    {% if films.producer %}
+        <div class="row">
+            <div class="col-sm-2">
+                <p>Producer</p>
+            </div>
+            <div class="col-sm-10">
+                <p>{{ films.producer }}</p>
+            </div>
+        </div>
+    {% endif %}
+
+    {% if films.release_date %}
+        <div class="row">
+            <div class="col-sm-2">
+                <p>Release Date</p>
+            </div>
+            <div class="col-sm-10">
+                <p>{{ films.release_date }}</p>
+            </div>
+        </div>
+    {% endif %}
+
+    {% if films.characters %}
+        <div class="row">
+            <div class="col-sm-2">
+                <p>Characters</p>
+            </div>
+            <div class="col-sm-10">
+                <p>{{ films.characters }}</p>
+            </div>
+        </div>
+    {% endif %}
+
+    {% if films.planets %}
+        <div class="row">
+            <div class="col-sm-2">
+                <p>Planets</p>
+            </div>
+            <div class="col-sm-10">
+                <p>{{ films.planets }}</p>
+            </div>
+        </div>
+    {% endif %}
+
+{% endblock mainbody %}
