@@ -1,11 +1,26 @@
 {% extends 'webapp/base.html' %}
 {% block mainbody %}
 
-    <article>
-        <header>
-            <h2>Planet Details</h2>
-        </header>
+    <header>
+        <div class="row">
+            <div class="col-sm-9">
+                <h2>{{ site.site_name | safe }}</h2>
+            </div>
+        {% if user.is_authenticated %}
+                <div class="col-xs-1">
+                    <a class="btn btn-outline-secondary">edit</a>
+                </div>
+                <div class="col-xs-1">
+                    &nbsp;<a class="btn btn-outline-warning">delete</a>
+                </div>
+            {% endif %}
+            <div class="col-xs-1">
+                &nbsp;<a class="btn btn-outline-secondary" href="{{request.META.HTTP_REFERER}}">back</a>
+            </div>
+        </div>
+    </header>
 
+    <article>
         {% if planets.name %}
             <div class="row">
                 <div class="col-sm-2">
