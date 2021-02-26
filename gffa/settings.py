@@ -16,20 +16,22 @@ from gffa import secrets
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = secrets.SECRET_KEY
 
+# Required by django-allauth which uses the sites framework. Otherwise, a
+# site matching query does not exist runtime exeception will be triggered
+# when attempting to log in to /admin.
+# Error: DoesNotExist at /admin/login/DoesNotExist at /admin/login/
+SITE_ID = 1
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
-
-# Application definition
+ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -37,22 +39,46 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'django.contrib.sites',
     'django.contrib.staticfiles',
 
-    'apps.webapp',
-    'apps.api.apps',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
+    'corsheaders',
+    'crispy_forms',
+    'django_filters',
     'rest_framework',
+
+    'apps.webapp',
+    'apps.api.apps'
 ]
 
+# Place coresheaders before Django CommonMiddleware
+# see https://pypi.org/project/django-cors-headers/
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+
+# CORS_ORIGIN_WHITELIST provides a list of origin hostnames that are authorized to make cross-site
+# HTTP requests. The value 'null' can also appear in this list, and will match the Origin: null
+# header that is used in “privacy-sensitive contexts”, such as when the client is running from
+# a file:// domain. Defaults to []. Port 3000 is the default port for React apps.
+
+# Value from tuple to list (20200709)
+# See https://github.com/adamchainz/django-cors-headers/issues/403
+CORS_ORIGIN_WHITELIST = [
+    'http://127.0.0.1:3000'
+    ]
 
 ROOT_URLCONF = 'gffa.urls'
 
@@ -103,6 +129,22 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+AUTHENTICATION_BACKENDS = (
+    # Required by Django admin
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` auth methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+
+    # 'social_core.backends.open_id.OpenIdAuth',
+    # 'social_core.backends.google.GoogleOpenId',
+    # 'social_core.backends.google.GoogleOAuth2',
+
+    # 'social_core.backends.google.GoogleOAuth',
+    # 'social_core.backends.twitter.TwitterOAuth',
+    # 'social_core.backends.yahoo.YahooOpenId',
+)
 
 
 # Internationalization
