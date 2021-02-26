@@ -61,18 +61,18 @@
                     <a class="nav-link" href="{% url 'vehicles' %}">Vehicles</a>
                 </div>
             </div>
-            <a class="nav-link" href="{% url 'login' %}">Log in</a>
-            {% if user.is_authenticated %}
-                <li class="nav-item">
-                    {{ user.username }}
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'logout' %}">Log out</a>
-                </li>
-            {% endif %}
-        </div>
         </ul>
     </div>
+
+    <a class="navbar-right" href="{% url 'login' %}">Log in</a>
+    {% if user.is_authenticated %}
+        <li class="nav-item">
+            {{ user.username }}
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'logout' %}">Log out</a>
+        </li>
+    {% endif %}
 </nav>
 
 <main>

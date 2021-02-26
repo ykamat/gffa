@@ -83,7 +83,6 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
     margin-bottom: 20px;
     min-height: 50px;
     position: relative;
-    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
     overflow: visible;
   }
 
@@ -98,6 +97,10 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 
 .navbar-default {
     background-color: #3a3f44;
+}
+
+.navbar-right {
+    float: right;
 }
 
 .dropdown {
@@ -119,6 +122,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 .navbar a:hover, .dropdown:hover .dropbtn {
     background-color: #ffe300;
     color: black;
+    font-weight: bold;
 }
 
 .dropdown-content {
@@ -126,7 +130,6 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
     position: absolute;
     background-color: #3a3f44;
     min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
 }
 
@@ -141,6 +144,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 
 .dropdown-content a:hover {
     background-color: #ffe300;
+    font-weight: bold;
 }
 
 .dropdown:hover .dropdown-content {
