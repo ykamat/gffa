@@ -46,30 +46,31 @@
 
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'about' %}">About</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'docs' %}">Documentation</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'films' %}">Films</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'persons' %}">Persons</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'planets' %}">Planets</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'species' %}">Species</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'starships' %}">Starships</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'vehicles' %}">Vehicles</a>
-            </li>
+            <a class="nav-link" href="{% url 'about' %}">About</a>
+            <a class="nav-link" href="{% url 'docs' %}">Documentation</a>
+            <div class="dropdown">
+                <button class="dropbtn">Classes
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content">
+                    <a class="nav-link" href="{% url 'films' %}">Films</a>
+                    <a class="nav-link" href="{% url 'persons' %}">Persons</a>
+                    <a class="nav-link" href="{% url 'planets' %}">Planets</a>
+                    <a class="nav-link" href="{% url 'species' %}">Species</a>
+                    <a class="nav-link" href="{% url 'starships' %}">Starships</a>
+                    <a class="nav-link" href="{% url 'vehicles' %}">Vehicles</a>
+                </div>
+            </div>
+            <a class="nav-link" href="{% url 'login' %}">Log in</a>
+            {% if user.is_authenticated %}
+                <li class="nav-item">
+                    {{ user.username }}
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'logout' %}">Log out</a>
+                </li>
+            {% endif %}
+        </div>
         </ul>
     </div>
 </nav>

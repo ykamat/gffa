@@ -3,8 +3,8 @@ from rest_framework import viewsets, permissions
 from rest_framework.pagination import PageNumberPagination
 
 from django.contrib.auth.models import User
-from apps.webapp.models import Film, Person, Planet, Species, Vehicle
-from .serializers import FilmSerializer, PersonSerializer, PlanetSerializer, SpeciesSerializer, VehicleSerializer
+from apps.webapp.models import Film, Person, Planet, Species, Starship, Vehicle
+from .serializers import FilmSerializer, PersonSerializer, PlanetSerializer, SpeciesSerializer, StarshipSerializer, VehicleSerializer
 
 
 class FilmViewSet(viewsets.ModelViewSet):
@@ -54,6 +54,7 @@ class PlanetViewSet(viewsets.ModelViewSet):
 
         return queryset.order_by('planet_id')
 
+
 class VehicleViewSet(viewsets.ModelViewSet):
     queryset = Vehicle.objects.all()
     serializer_class = VehicleSerializer
@@ -70,6 +71,7 @@ class VehicleViewSet(viewsets.ModelViewSet):
 
         return queryset.order_by('vehicle_id')
 
+
 class SpeciesViewSet(viewsets.ModelViewSet):
     queryset = Species.objects.all()
     serializer_class = SpeciesSerializer
@@ -85,3 +87,20 @@ class SpeciesViewSet(viewsets.ModelViewSet):
             queryset = queryset.filter(name__contains=name)
 
         return queryset.order_by('species_id')
+
+
+class StarshipViewSet(viewsets.ModelViewSet):
+    queryset = Starship.objects.all()
+    serializer_class = StarshipSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+
+    def get_queryset(self):
+        queryset = Starship.objects.all()
+        hyperdrive_rating = self.request.query_params.get('hyperdrive_rating', None)
+        name = self.request.query_params.get('name',None)
+        if hyperdrive_rating:
+            queryset = queryset.filter(home_world__name__iexact=hyperdrive_rating)
+        if name:
+            queryset = queryset.filter(name__contains=name)
+
+        return queryset.order_by('starship_id')

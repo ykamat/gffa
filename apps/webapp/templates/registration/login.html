@@ -1,0 +1,27 @@
+{% extends 'webapp/base.html' %}
+
+{% block mainbody %}
+
+    <header>
+        <div class="row">
+        <div class="col-sm-11">
+            <h2>Login</h2>
+        </div>
+        <br>
+        <br>
+        <div class="col-xs-1">
+            <a class="btn btn-outline-secondary" href="{{request.META.HTTP_REFERER}}">back</a>
+        </div>
+        </div>
+    </header>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+    <button type="submit" class="btn btn-outline-success">Sign in</button>
+    </form>
+
+    <br>
+    <br>
+
+{% endblock mainbody %}
