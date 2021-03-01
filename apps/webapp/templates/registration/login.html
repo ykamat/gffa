@@ -1,5 +1,6 @@
 {% extends 'webapp/base.html' %}
 
+{% load socialaccount %}
 {% block mainbody %}
 
     <header>
@@ -15,10 +16,16 @@
         </div>
     </header>
 
+    <p>Connect with a social network:</p>
+    <a href="{% provider_login_url 'google' %}">Sign in with Google</a>
+    <p>&nbsp;</p>
+
+    <p>Sign in with your username and password:</p>
+
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
-    <button type="submit" class="btn btn-outline-success">Sign in</button>
+        <button type="submit" class="btn btn-outline-success">Sign in</button>
     </form>
 
     <br>
