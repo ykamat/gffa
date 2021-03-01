@@ -20,10 +20,12 @@ from django.contrib import admin
 from django.contrib.auth.views import LoginView, LogoutView
 from django.http import HttpResponseRedirect
 from django.urls import include, path
+from django.views.generic import TemplateView
 
 urlpatterns = [
     path('', lambda r: HttpResponseRedirect('apps/webapp/')),
     path('admin/', admin.site.urls),
+    path('accounts/', include('allauth.urls')),
     path('apps/webapp/', include('apps.webapp.urls')),
     path('api/', include('apps.api.urls')),
     path('login/', LoginView.as_view(), name='login'),
