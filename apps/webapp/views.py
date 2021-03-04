@@ -138,6 +138,15 @@ class StarshipListView(generic.ListView):
 		# return Starship.objects.select_related('?').order_by('?')
 
 
+class VehicleDetailView(generic.DetailView):
+	model = Vehicle
+	context_object_name = 'vehicles'
+	template_name = 'webapp/vehicle_detail.html'
+
+	def get_object(self):
+		return super().get_object()
+
+
 class VehicleListView(generic.ListView):
 	model = Vehicle
 	context_object_name = 'vehicles'
