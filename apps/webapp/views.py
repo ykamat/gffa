@@ -26,6 +26,34 @@ class AboutPageView(generic.TemplateView):
 class DocsPageView(generic.TemplateView):
 	template_name = 'webapp/docs.html'
 
+
+class RootPageView(generic.TemplateView):
+	template_name = 'webapp/root.html'
+
+class FilmPageView(generic.TemplateView):
+	template_name = 'webapp/film_docs.html'
+
+
+class PersonPageView(generic.TemplateView):
+	template_name = 'webapp/person_docs.html'
+
+
+class PlanetPageView(generic.TemplateView):
+	template_name = 'webapp/planet_docs.html'
+
+
+class SpeciesPageView(generic.TemplateView):
+	template_name = 'webapp/species_docs.html'
+
+
+class StarshipPageView(generic.TemplateView):
+	template_name = 'webapp/starship_docs.html'
+
+
+class VehiclePageView(generic.TemplateView):
+	template_name = 'webapp/vehicle_docs.html'
+
+
 class FilmDetailView(generic.DetailView):
 	model = Film
 	context_object_name = 'films'
@@ -47,6 +75,7 @@ class FilmListView(generic.ListView):
 		return Film.objects.all()
 		# return Person.objects.select_related('homeworld').order_by('name')
 
+
 class PersonDetailView(generic.DetailView):
 	model = Person
 	context_object_name = 'persons'
@@ -55,6 +84,7 @@ class PersonDetailView(generic.DetailView):
 	def get_object(self):
 		person = super().get_object()
 		return person
+
 
 class PersonListView(generic.ListView):
 	model = Person

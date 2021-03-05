@@ -47,7 +47,21 @@
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav mr-auto">
             <a class="nav-link" href="{% url 'about' %}">About</a>
-            <a class="nav-link" href="{% url 'docs' %}">Documentation</a>
+            <div class="dropdown">
+                <a class="dropbtn">Documentation
+                    <i class="fa fa-caret-down"></i>
+                </a>
+                <div class="dropdown-content">
+                    <a class="nav-link" href="{% url 'docs' %}">Documentation</a>
+                    <a class="nav-link" href="{% url 'root' %}">Root</a>
+                    <a class="nav-link" href="{% url 'film_docs' %}">Films</a>
+                    <a class="nav-link" href="{% url 'person_docs' %}">Persons</a>
+                    <a class="nav-link" href="{% url 'planet_docs' %}">Planets</a>
+                    <a class="nav-link" href="{% url 'species_docs' %}">Species</a>
+                    <a class="nav-link" href="{% url 'starship_docs' %}">Starships</a>
+                    <a class="nav-link" href="{% url 'vehicle_docs' %}">Vehicles</a>
+                </div>
+            </div>
             <div class="dropdown">
                 <button class="dropbtn">Entities
                     <i class="fa fa-caret-down"></i>

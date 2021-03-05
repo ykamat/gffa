@@ -1,0 +1,113 @@
+{% extends 'webapp/base.html' %}
+
+{% block mainbody %}
+
+    <p><a name="starships"></a></p>
+        <h3 id="starships">Starships</h3>
+        <p>A Starship resource is a single transport craft that has hyperdrive capability.</p>
+        <p><strong>Endpoints</strong></p>
+        <ul>
+            <li><code>/starships/</code> -- get all the starship resources</li>
+            <li><code>/starships/:id/</code> -- get a specific starship resource</li>
+            <li><code>/starships/schema/</code> -- view the JSON schema for this resource</li>
+        </ul>
+        <p><strong>Example request:</strong></p>
+        <pre><code>http https://swapi.py4e.com/api/starships/9/</code></pre>
+        <p><strong>Example response:</strong></p>
+        <pre><code>HTTP/1.0 200 OK
+        Content-Type: application/json
+        {
+        "MGLT": "10 MGLT",
+        "cargo_capacity": "1000000000000",
+        "consumables": "3 years",
+        "cost_in_credits": "1000000000000",
+        "created": "2014-12-10T16:36:50.509000Z",
+        "crew": "342953",
+        "edited": "2014-12-10T16:36:50.509000Z",
+        "hyperdrive_rating": "4.0",
+        "length": "120000",
+        "manufacturer": "Imperial Department of Military Research, Sienar Fleet Systems",
+        "max_atmosphering_speed": "n/a",
+        "model": "DS-1 Orbital Battle Station",
+        "name": "Death Star",
+        "passengers": "843342",
+        "films": [
+        "https://swapi.py4e.com/api/films/1/"
+        ],
+        "pilots": [],
+        "starship_class": "Deep Space Mobile Battlestation",
+        "url": "https://swapi.py4e.com/api/starships/9/"
+        }</code></pre>
+        <p><strong>Attributes:</strong></p>
+        <ul>
+            <li><code>name</code> <em>string</em>
+                -- The name of this starship. The common name, such as "Death Star".
+            </li>
+            <li><code>model</code> <em>string</em>
+                -- The model or official name of this starship. Such as "T-65 X-wing" or "DS-1
+                Orbital Battle Station".
+            </li>
+            <li><code>starship_class</code> <em>string</em>
+                -- The class of this starship, such as "Starfighter" or "Deep Space Mobile
+                Battlestation"
+            </li>
+            <li><code>manufacturer</code> <em>string</em>
+                -- The manufacturer of this starship. Comma separated if more than one.
+            </li>
+            <li><code>cost_in_credits</code> <em>string</em>
+                -- The cost of this starship new, in galactic credits.
+            </li>
+            <li><code>length</code> <em>string</em>
+                -- The length of this starship in meters.
+            </li>
+            <li><code>crew</code> <em>string</em>
+                -- The number of personnel needed to run or pilot this starship.
+            </li>
+            <li><code>passengers</code> <em>string</em>
+                -- The number of non-essential individuals that this starship can transport.
+            </li>
+            <li><code>max_atmosphering_speed</code> <em>string</em>
+                -- The maximum speed of this starship in the atmosphere. "N/A" if this starship
+                is incapable of atmospheric flight.
+            </li>
+            <li><code>hyperdrive_rating</code> <em>string</em>
+                -- The class of this starships hyperdrive.
+            </li>
+            <li><code>MGLT</code> <em>string</em>
+                -- The Maximum number of Megalights this starship can travel in a standard hour.
+                A "Megalight" is a standard unit of distance and has never been defined before
+                within the Star Wars universe. This figure is only really useful for measuring
+                the difference in speed of starships. We can assume it is similar to AU, the
+                distance between our Sun (Sol) and Earth.
+            </li>
+            <li><code>cargo_capacity</code> <em>string</em>
+                -- The maximum number of kilograms that this starship can transport.
+            </li>
+            <li><code>consumables</code> *string</li>
+            <li>The maximum length of time that this starship can provide consumables for its
+                entire crew without having to resupply.
+            </li>
+            <li><code>films</code> <em>array</em>
+                -- An array of Film URL Resources that this starship has appeared in.
+            </li>
+            <li><code>pilots</code> <em>array</em>
+                -- An array of Person URL Resources that this starship has been piloted by.
+            </li>
+            <li><code>url</code> <em>string</em>
+                -- the hypermedia URL of this resource.
+            </li>
+            <li><code>created</code> <em>string</em>
+                -- the ISO 8601 date format of the time that this resource was created.
+            </li>
+            <li><code>edited</code> <em>string</em>
+                -- the ISO 8601 date format of the time that this resource was edited.
+            </li>
+        </ul>
+        <p><strong>Search Fields:</strong></p>
+        <ul>
+            <li><code>name</code></li>
+            <li><code>model</code></li>
+        </ul>
+        <hr/>
+
+{% endblock mainbody %}

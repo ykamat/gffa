@@ -1,0 +1,113 @@
+{% extends 'webapp/base.html' %}
+
+{% block mainbody %}
+
+    <p><a name="persons"></a></p>
+        <h3 id="persons">Persons</h3>
+        <p>A Person resource is an individual person or character within the Star Wars
+            universe.</p>
+        <p><strong>Endpoints</strong></p>
+        <ul>
+            <li><code>/persons/</code> -- get all person resources</li>
+            <li><code>/persons/:id/</code> -- get a specific person resource</li>
+            <li><code>/persons/schema/</code> -- view the JSON schema for this resource</li>
+        </ul>
+        <p><strong>Example request:</strong></p>
+        <pre><code>http https://swapi.py4e.com/api/persons/1/</code></pre>
+        <p><strong>Example response:</strong></p>
+        <pre><code>HTTP/1.0 200 OK
+        Content-Type: application/json
+        {
+        "birth_year": "19 BBY",
+        "eye_color": "Blue",
+        "films": [
+        "https://swapi.py4e.com/api/films/1/",
+        ...
+        ],
+        "gender": "Male",
+        "hair_color": "Blond",
+        "height": "172",
+        "homeworld": "https://swapi.py4e.com/api/planets/1/",
+        "mass": "77",
+        "name": "Luke Skywalker",
+        "skin_color": "Fair",
+        "created": "2014-12-09T13:50:51.644000Z",
+        "edited": "2014-12-10T13:52:43.172000Z",
+        "species": [
+        "https://swapi.py4e.com/api/species/1/"
+        ],
+        "starships": [
+        "https://swapi.py4e.com/api/starships/12/",
+        ...
+        ],
+        "url": "https://swapi.py4e.com/api/persons/1/",
+        "vehicles": [
+        "https://swapi.py4e.com/api/vehicles/14/"
+        ...
+        ]
+        }</code></pre>
+        <p><strong>Attributes:</strong></p>
+        <ul>
+            <li><code>name</code> <em>string</em>
+                -- The name of this person.
+            </li>
+            <li><code>birth_year</code> <em>string</em>
+                -- The birth year of the person, using the in-universe standard of
+                <strong>BBY</strong> or <strong>ABY</strong> - Before the Battle of Yavin or
+                After the Battle of Yavin. The Battle of Yavin is a battle that occurs at the
+                end of Star Wars episode IV: A New Hope.
+            </li>
+            <li><code>eye_color</code> <em>string</em>
+                -- The eye color of this person. Will be "unknown" if not known or "n/a" if the
+                person does not have an eye.
+            </li>
+            <li><code>gender</code> <em>string</em>
+                -- The gender of this person. Either "Male", "Female" or "unknown", "n/a" if the
+                person does not have a gender.
+            </li>
+            <li><code>hair_color</code> <em>string</em>
+                -- The hair color of this person. Will be "unknown" if not known or "n/a" if the
+                person does not have hair.
+            </li>
+            <li><code>height</code> <em>string</em>
+                -- The height of the person in centimeters.
+            </li>
+            <li><code>mass</code> <em>string</em>
+                -- The mass of the person in kilograms.
+            </li>
+            <li><code>skin_color</code> <em>string</em>
+                -- The skin color of this person.
+            </li>
+            <li><code>homeworld</code> <em>string</em>
+                -- The URL of a planet resource, a planet that this person was born on or
+                inhabits.
+            </li>
+            <li><code>films</code> <em>array</em>
+                -- An array of film resource URLs that this person has been in.
+            </li>
+            <li><code>species</code> <em>array</em>
+                -- An array of species resource URLs that this person belongs to.
+            </li>
+            <li><code>starships</code> <em>array</em>
+                -- An array of starship resource URLs that this person has piloted.
+            </li>
+            <li><code>vehicles</code> <em>array</em>
+                -- An array of vehicle resource URLs that this person has piloted.
+            </li>
+            <li><code>url</code> <em>string</em>
+                -- the hypermedia URL of this resource.
+            </li>
+            <li><code>created</code> <em>string</em>
+                -- the ISO 8601 date format of the time that this resource was created.
+            </li>
+            <li><code>edited</code> <em>string</em>
+                -- the ISO 8601 date format of the time that this resource was edited.
+            </li>
+        </ul>
+        <p><strong>Search Fields:</strong></p>
+        <ul>
+            <li><code>name</code></li>
+        </ul>
+    <hr/>
+
+{% endblock mainbody %}

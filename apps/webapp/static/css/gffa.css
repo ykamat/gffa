@@ -128,7 +128,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #3a3f44;
+    background-image: linear-gradient(#484e55, #3a3f44 60%, #313539);
     min-width: 160px;
     z-index: 1;
 }
