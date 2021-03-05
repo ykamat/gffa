@@ -1,0 +1,100 @@
+{% extends 'webapp/base.html' %}
+
+{% block mainbody %}
+
+    <p><a name="species"></a></p>
+        <h3 id="species">Species</h3>
+        <p>A Species resource is a type of person or character within the Star Wars
+            Universe.</p>
+        <p><strong>Endpoints</strong></p>
+        <ul>
+            <li><code>/species/</code> -- get all the species resources</li>
+            <li><code>/species/:id/</code> -- get a specific species resource</li>
+            <li><code>/species/schema/</code> -- view the JSON schema for this resource</li>
+        </ul>
+        <p><strong>Example request:</strong></p>
+        <pre><code>http https://swapi.py4e.com/api/species/3/</code></pre>
+        <p><strong>Example response:</strong></p>
+        <pre><code>HTTP/1.0 200 OK
+        Content-Type: application/json
+        {
+        "average_height": "2.1",
+        "average_lifespan": "400",
+        "classification": "Mammal",
+        "created": "2014-12-10T16:44:31.486000Z",
+        "designation": "Sentient",
+        "edited": "2014-12-10T16:44:31.486000Z",
+        "eye_colors": "blue, green, yellow, brown, golden, red",
+        "hair_colors": "black, brown",
+        "homeworld": "https://swapi.py4e.com/api/planets/14/",
+        "language": "Shyriiwook",
+        "name": "Wookie",
+        "people": [
+        "https://swapi.py4e.com/api/persons/13/"
+        ],
+        "films": [
+        "https://swapi.py4e.com/api/films/1/",
+        "https://swapi.py4e.com/api/films/2/"
+        ],
+        "skin_colors": "gray",
+        "url": "https://swapi.py4e.com/api/species/3/"
+        }</code></pre>
+        <p><strong>Attributes:</strong></p>
+        <ul>
+            <li><code>name</code> <em>string</em>
+                -- The name of this species.
+            </li>
+            <li><code>classification</code> <em>string</em>
+                -- The classification of this species, such as "mammal" or "reptile".
+            </li>
+            <li><code>designation</code> <em>string</em>
+                -- The designation of this species, such as "sentient".
+            </li>
+            <li><code>average_height</code> <em>string</em>
+                -- The average height of this species in centimeters.
+            </li>
+            <li><code>average_lifespan</code> <em>string</em>
+                -- The average lifespan of this species in years.
+            </li>
+            <li><code>eye_colors</code> <em>string</em>
+                -- A comma-separated string of common eye colors for this species, "none" if
+                this species does not typically have eyes.
+            </li>
+            <li><code>hair_colors</code> <em>string</em>
+                -- A comma-separated string of common hair colors for this species, "none" if
+                this species does not typically have hair.
+            </li>
+            <li><code>skin_colors</code> <em>string</em>
+                -- A comma-separated string of common skin colors for this species, "none" if
+                this species does not typically have skin.
+            </li>
+            <li><code>language</code> <em>string</em>
+                -- The language commonly spoken by this species.
+            </li>
+            <li><code>homeworld</code> <em>string</em>
+                -- The URL of a planet resource, a planet that this species originates from.
+            </li>
+            <li><code>persons</code> <em>array</em>
+                -- An array of Person URL Resources that are a part of this species.
+            </li>
+            <li><code>films</code> <em>array</em>
+                -- An array of Film URL Resources that this species has appeared in.
+            </li>
+            <li><code>url</code> <em>string</em>
+                -- the hypermedia URL of this resource.
+            </li>
+            <li><code>created</code> <em>string</em>
+                -- the ISO 8601 date format of the time that this resource was created.
+            </li>
+            <li><code>edited</code> <em>string</em>
+                -- the ISO 8601 date format of the time that this resource was edited.
+            </li>
+        </ul>
+        <p><strong>Search Fields:</strong></p>
+        <ul>
+            <li><code>name</code></li>
+        </ul>
+        <hr/>
+
+
+{% endblock mainbody %}

@@ -1,0 +1,98 @@
+{% extends 'webapp/base.html' %}
+
+{% block mainbody %}
+
+    <p><a name="planets"></a></p>
+        <h3 id="planets">Planets</h3>
+        <p>A Planet resource is a large mass, planet or planetoid in the Star Wars Universe, at
+            the time of 0 ABY.</p>
+        <p><strong>Endpoints</strong></p>
+        <ul>
+            <li><code>/planets/</code> -- get all the planets resources</li>
+            <li><code>/planets/:id/</code> -- get a specific planets resource</li>
+            <li><code>/planets/schema/</code> -- view the JSON schema for this resource</li>
+        </ul>
+        <p><strong>Example request:</strong></p>
+        <pre><code>http https://swapi.py4e.com/api/planets/1/</code></pre>
+        <p><strong>Example response:</strong></p>
+        <pre><code>HTTP/1.0 200 OK
+        Content-Type: application/json
+        {
+        "climate": "Arid",
+        "created": "2014-12-09T13:50:49.641000Z",
+        "diameter": "10465",
+        "edited": "2014-12-15T13:48:16.167217Z",
+        "films": [
+        "https://swapi.py4e.com/api/films/1/",
+        ...
+        ],
+        "gravity": "1",
+        "name": "Tatooine",
+        "orbital_period": "304",
+        "population": "120000",
+        "residents": [
+        "https://swapi.py4e.com/api/persons/1/",
+        ...
+        ],
+        "rotation_period": "23",
+        "surface_water": "1",
+        "terrain": "Dessert",
+        "url": "https://swapi.py4e.com/api/planets/1/"
+        }</code></pre>
+        <p><strong>Attributes:</strong></p>
+        <ul>
+            <li><code>name</code> <em>string</em>
+                -- The name of this planet.
+            </li>
+            <li><code>diameter</code> <em>string</em>
+                -- The diameter of this planet in kilometers.
+            </li>
+            <li><code>rotation_period</code> <em>string</em>
+                -- The number of standard hours it takes for this planet to complete a single
+                rotation on its axis.
+            </li>
+            <li><code>orbital_period</code> <em>string</em>
+                -- The number of standard days it takes for this planet to complete a single
+                orbit of its local star.
+            </li>
+            <li><code>gravity</code> <em>string</em>
+                -- A number denoting the gravity of this planet, where "1" is normal or 1
+                standard G. "2" is twice or 2 standard Gs. "0.5" is half or 0.5 standard Gs.
+            </li>
+            <li><code>population</code> <em>string</em>
+                -- The average population of sentient beings inhabiting this planet.
+            </li>
+            <li><code>climate</code> <em>string</em>
+                -- The climate of this planet. Comma separated if diverse.
+            </li>
+            <li><code>terrain</code> <em>string</em>
+                -- The terrain of this planet. Comma separated if diverse.
+            </li>
+            <li><code>surface_water</code> <em>string</em>
+                -- The percentage of the planet surface that is naturally occurring water or
+                bodies of water.
+            </li>
+            <li><code>residents</code> <em>array</em>
+                -- An array of Person URL Resources that live on this planet.
+            </li>
+            <li><code>films</code> <em>array</em>
+                -- An array of Film URL Resources that this planet has appeared in.
+            </li>
+            <li><code>url</code> <em>string</em>
+                -- the hypermedia URL of this resource.
+            </li>
+            <li><code>created</code> <em>string</em>
+                -- the ISO 8601 date format of the time that this resource was created.
+            </li>
+            <li><code>edited</code> <em>string</em>
+                -- the ISO 8601 date format of the time that this resource was edited.
+            </li>
+        </ul>
+        <p><strong>Search Fields:</strong></p>
+        <ul>
+            <li><code>name</code></li>
+        </ul>
+        </hr>
+
+
+{% endblock mainbody %}
