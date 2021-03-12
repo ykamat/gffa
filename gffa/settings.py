@@ -48,8 +48,8 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.google',
     'corsheaders',
     'crispy_forms',
-    'django_filters',
     'oauth_app',
+    'django_filters',
     'rest_framework',
 
     'apps.webapp',
@@ -101,6 +101,8 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'gffa.wsgi.application'
 
+# django-crispy-forms
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
