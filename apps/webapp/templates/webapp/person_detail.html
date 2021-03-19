@@ -1,114 +1,134 @@
 {% extends 'webapp/base.html' %}
 {% block mainbody %}
 
-    {% if persons.name %}
+    <header>
         <div class="row">
-            <div class="col-sm-2">
-                <p>Name</p>
+            <div class="col-sm-9">
+                <h2>{{ site.site_name | safe }}</h2>
             </div>
-            <div class="col-sm-10">
-                <p>{{ persons.name }}</p>
+            {% if user.is_authenticated %}
+                <div class="col-xs-1">
+                    <a class="btn btn-outline-secondary">edit</a>
+                </div>
+                <div class="col-xs-1">
+                    &nbsp;<a class="btn btn-outline-warning">delete</a>
+                </div>
+            {% endif %}
+            <div class="col-xs-1">
+                &nbsp;<a class="btn btn-outline-secondary" href="{{request.META.HTTP_REFERER}}">back</a>
             </div>
         </div>
-    {% endif %}
+    </header>
 
-    {% if persons.species %}
-        <div class="row">
-            <div class="col-sm-2">
-                <p>Species</p>
+    <article>
+        {% if persons.name %}
+            <div class="row">
+                <div class="col-sm-2">
+                    <p>Name</p>
+                </div>
+                <div class="col-sm-10">
+                    <p>{{ persons.name }}</p>
+                </div>
             </div>
-            <div class="col-sm-10">
-                <p>{{ persons.species }}</p>
-            </div>
-        </div>
-    {% endif %}
+        {% endif %}
 
-    {% if persons.gender %}
-        <div class="row">
-            <div class="col-sm-2">
-                <p>Gender</p>
+        {% if persons.species %}
+            <div class="row">
+                <div class="col-sm-2">
+                    <p>Species</p>
+                </div>
+                <div class="col-sm-10">
+                    <p>{{ persons.species }}</p>
+                </div>
             </div>
-            <div class="col-sm-10">
-                <p>{{ persons.gender }}</p>
-            </div>
-        </div>
-    {% endif %}
+        {% endif %}
 
-    {% if persons.birth_year %}
-        <div class="row">
-            <div class="col-sm-2">
-                <p>Birth Year</p>
+        {% if persons.gender %}
+            <div class="row">
+                <div class="col-sm-2">
+                    <p>Gender</p>
+                </div>
+                <div class="col-sm-10">
+                    <p>{{ persons.gender }}</p>
+                </div>
             </div>
-            <div class="col-sm-10">
-                <p>{{ persons.birth_year }}</p>
-            </div>
-        </div>
-    {% endif %}
+        {% endif %}
 
-    {% if persons.home_world %}
-        <div class="row">
-            <div class="col-sm-2">
-                <p>Home World</p>
+        {% if persons.birth_year %}
+            <div class="row">
+                <div class="col-sm-2">
+                    <p>Birth Year</p>
+                </div>
+                <div class="col-sm-10">
+                    <p>{{ persons.birth_year }}</p>
+                </div>
             </div>
-            <div class="col-sm-10">
-                <p>{{ persons.home_world }}</p>
-            </div>
-        </div>
-    {% endif %}
+        {% endif %}
 
-    {% if persons.height %}
-        <div class="row">
-            <div class="col-sm-2">
-                <p>Height</p>
+        {% if persons.home_world %}
+            <div class="row">
+                <div class="col-sm-2">
+                    <p>Home World</p>
+                </div>
+                <div class="col-sm-10">
+                    <p>{{ persons.home_world }}</p>
+                </div>
             </div>
-            <div class="col-sm-10">
-                <p>{{ persons.height }} cm</p>
-            </div>
-        </div>
-    {% endif %}
+        {% endif %}
 
-    {% if persons.mass %}
-        <div class="row">
-            <div class="col-sm-2">
-                <p>Weight</p>
+        {% if persons.height %}
+            <div class="row">
+                <div class="col-sm-2">
+                    <p>Height</p>
+                </div>
+                <div class="col-sm-10">
+                    <p>{{ persons.height }} cm</p>
+                </div>
             </div>
-            <div class="col-sm-10">
-                <p>{{ persons.mass }} kgs</p>
-            </div>
-        </div>
-    {% endif %}
+        {% endif %}
 
-    {% if persons.eye_color %}
-        <div class="row">
-            <div class="col-sm-2">
-                <p>Eye Color</p>
+        {% if persons.mass %}
+            <div class="row">
+                <div class="col-sm-2">
+                    <p>Weight</p>
+                </div>
+                <div class="col-sm-10">
+                    <p>{{ persons.mass }} kgs</p>
+                </div>
             </div>
-            <div class="col-sm-10">
-                <p>{{ persons.eye_color }}</p>
-            </div>
-        </div>
-    {% endif %}
+        {% endif %}
 
-    {% if persons.hair_color %}
-        <div class="row">
-            <div class="col-sm-2">
-                <p>Hair Color</p>
+        {% if persons.eye_color %}
+            <div class="row">
+                <div class="col-sm-2">
+                    <p>Eye Color</p>
+                </div>
+                <div class="col-sm-10">
+                    <p>{{ persons.eye_color }}</p>
+                </div>
             </div>
-            <div class="col-sm-10">
-                <p>{{ persons.hair_color }}</p>
-            </div>
-        </div>
-    {% endif %}
+        {% endif %}
 
-    {% if persons.skin_color %}
-        <div class="row">
-            <div class="col-sm-2">
-                <p>Skin Color</p>
+        {% if persons.hair_color %}
+            <div class="row">
+                <div class="col-sm-2">
+                    <p>Hair Color</p>
+                </div>
+                <div class="col-sm-10">
+                    <p>{{ persons.hair_color }}</p>
+                </div>
             </div>
-            <div class="col-sm-10">
-                <p>{{ persons.skin_color }}</p>
-            </div>
-        </div>
-    {% endif %}
+        {% endif %}
 
+        {% if persons.skin_color %}
+            <div class="row">
+                <div class="col-sm-2">
+                    <p>Skin Color</p>
+                </div>
+                <div class="col-sm-10">
+                    <p>{{ persons.skin_color }}</p>
+                </div>
+            </div>
+        {% endif %}
+    </article>
 {% endblock mainbody %}
