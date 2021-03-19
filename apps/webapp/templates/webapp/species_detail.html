@@ -1,6 +1,27 @@
 {% extends 'webapp/base.html' %}
 {% block mainbody %}
 
+    <header>
+        <div class="row">
+            <div class="col-sm-9">
+                {% if species.name %}
+                    <h2>{{ species.name | safe }}</h2>
+                {% endif %}
+            </div>
+            {% if user.is_authenticated %}
+                <div class="col-xs-1">
+                    <a class="btn btn-outline-secondary" href="">edit</a>
+                </div>
+                <div class="col-xs-1">
+                    &nbsp;<a class="btn btn-outline-warning" href="">delete</a>
+                </div>
+            {% endif %}
+            <div class="col-xs-1">
+                &nbsp;<a class="btn btn-outline-secondary" href="{{request.META.HTTP_REFERER}}">back</a>
+            </div>
+        </div>
+    </header>
+ 
     {% if species.name %}
         <div class="row">
             <div class="col-sm-2">
