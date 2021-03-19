@@ -26,7 +26,7 @@ SECRET_KEY = secrets.SECRET_KEY
 # site matching query does not exist runtime exeception will be triggered
 # when attempting to log in to /admin.
 # Error: DoesNotExist at /admin/login/DoesNotExist at /admin/login/
-SITE_ID = 1
+SITE_ID = 2
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.google',
     'corsheaders',
     'crispy_forms',
+    'oauth_app',
     'django_filters',
     'rest_framework',
 
@@ -100,6 +101,8 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'gffa.wsgi.application'
 
+# django-crispy-forms
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
@@ -149,6 +152,17 @@ AUTHENTICATION_BACKENDS = (
     # 'social_core.backends.yahoo.YahooOpenId',
 )
 
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'SCOPE': [
+            'profile',
+            'email',
+        ],
+        'AUTH_PARAMS': {
+            'access_type': 'online',
+        }
+    }
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
