@@ -41,6 +41,7 @@ urlpatterns = [
     path('docs/', views.DocsPageView.as_view(), name='docs'),
     path('about/', views.AboutPageView.as_view(), name='about'),
     path('films/', views.FilmListView.as_view(), name='films'),
+    path('films/<int:pk>', views.FilmDetailView.as_view(), name='film_detail'),
     path('persons/', views.PersonListView.as_view(), name='persons'),
     path('persons/<int:pk>/', views.PersonDetailView.as_view(), name='person_detail'),
     # path(r"^stats$", "swapi.views.stats"),
