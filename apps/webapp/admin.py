@@ -205,7 +205,8 @@ class VehicleAdmin(admin.ModelAdmin):
         'passengers',
         'max_atmosphering_speed',
         'cargo_capacity',
-        'consumables'
+        'consumables',
+        'pilots'
     ]
     list_display = [
         'name',
@@ -217,7 +218,8 @@ class VehicleAdmin(admin.ModelAdmin):
         'passengers',
         'max_atmosphering_speed',
         'cargo_capacity',
-        'consumables'
+        'consumables',
+        'pilots'
     ]
     list_filter = ['name']
     ordering = ['name']

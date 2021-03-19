@@ -1,6 +1,11 @@
-from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
+from django.http import HttpResponse, HttpResponseRedirect
+from django.shortcuts import redirect, render
 from django.views import generic
-from . models import Film, Person, Planet, Species, Starship, Vehicle
+from django.urls import reverse_lazy
+from django.utils.decorators import method_decorator
+from . forms import FilmForm
+from . models import Film, FilmJurisdiction, Person, Planet, Species, Starship, Vehicle
 
 
 class HomePageView(generic.TemplateView):
@@ -29,6 +34,76 @@ class DocsPageView(generic.TemplateView):
 
 class RootPageView(generic.TemplateView):
 	template_name = 'webapp/root.html'
+
+
+@method_decorator(login_required, name='dispatch')
+class FilmCreateView(generic.View):
+	model = Film
+	form_class = FilmForm
+	success_message = "Film created successfully"
+	template_name = 'webapp/film_new.html'
+
+	def dispatch(self, *args, **kwargs):
+		return super().dispatch(*args, **kwargs)
+
+	def post(self, request):
+		form = FilmForm(request.POST)
+		if form.is_valid():
+			film = form.save(commit=False)
+			film.save()
+			FilmJurisdiction.objects.create(film=film)
+			# return redirect(film) # shortcut to object's get_absolute_url()
+			return HttpResponseRedirect(film.get_absolute_url())
+
+		return render(request, 'webapp/film_new.html', {'form': form})
+
+	def get(self, request):
+		form = FilmForm()
+		return render(request, 'webapp/film_new.html', {'form': form})
+
+
+@method_decorator(login_required, name='dispatch')
+class FilmDeleteView(generic.DeleteView):
+	model = Film
+	success_message = "Film deleted successfully"
+	success_url = reverse_lazy('films')
+	context_object_name = 'films'
+	template_name = 'webapp/film_delete.html'
+
+	def dispatch(self, *args, **kwargs):
+		return super().dispatch(*args, **kwargs)
+
+	def delete(self, request, *args, **kwargs):
+		self.object = self.get_object()
+
+		# Delete FilmJurisdiction entries
+		FilmJurisdiction.objects \
+			.filter(film_id=self.object.film_id) \
+			.delete()
+
+		self.object.delete()
+
+		return HttpResponseRedirect(self.get_success_url())
+
+
+@method_decorator(login_required, name='dispatch')
+class FilmUpdateview(generic.UpdateView):
+	model = Film
+	form_class = FilmForm
+	context_object_name = 'films'
+	success_message = "Film updated successfully"
+	template_name = 'webapp/film_update.html'
+
+	def dispatch(self, *args, **kwargs):
+		return super().dispatch(*args, **kwargs)
+
+	def form_valid(self, form):
+		film = form.save(commit=False)
+		film.save()
+
+		return HttpResponseRedirect(film.get_absolute_url())
+		# return redirect('webapp/film_detail', pk=film.pk)
+
 
 class FilmPageView(generic.TemplateView):
 	template_name = 'webapp/film_docs.html'

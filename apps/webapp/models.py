@@ -1,5 +1,5 @@
 from django.db import models
-# from django.urls import reverse
+from django.urls import reverse
 
 
 class Film(models.Model):
@@ -33,6 +33,9 @@ class Film(models.Model):
     # def get_species(self):
     #     return "\n".join([species.url for species in self.species.all()])
 
+    def get_absolute_url(self):
+        return reverse('film_detail', kwargs={'pk': self.pk})
+
     class Meta:
         managed = False
         db_table = 'film'
@@ -50,13 +53,30 @@ class Film(models.Model):
         return self.title
 
 
-class FilmPerson(models.Model):
-    film_person_id = models.AutoField(primary_key=True)
-    film = models.ForeignKey('Film', on_delete=models.CASCADE)
-    person = models.ForeignKey('Person', on_delete=models.CASCADE)
+class FilmJurisdiction(models.Model):
+    """
+	PK added to satisfy Django requirement. The Film entry will be deleted if
+    corresponding parent record in the film table is deleted.
+    This mirrors CONSTRAINT behavior in the MySQL back-end.
+	"""
+    film_jurisdiction_id = models.AutoField(primary_key=True)
+    film = models.ForeignKey('Film', on_delete=models.CASCADE, blank=True, null=True)
 
     class Meta:
-        managed = False
+        managed = True
+        db_table = 'film_jurisdiction'
+        ordering = ['film']
+        verbose_name = 'Film Jurisdiction'
+        verbose_name_plural = 'Film Jurisdictions'
+
+
+class FilmPerson(models.Model):
+    film_person_id = models.AutoField(primary_key=True)
+    film = models.ForeignKey('Film', on_delete=models.CASCADE, blank=True, null=True)
+    person = models.ForeignKey('Person', on_delete=models.CASCADE, blank=True, null=True)
+
+    class Meta:
+        managed = True
         db_table = 'film_person'
         ordering = ['film', 'person']
         verbose_name = 'Film Character'
@@ -64,14 +84,13 @@ class FilmPerson(models.Model):
         unique_together = (('film', 'person'),)
 
 
-
 class FilmPlanet(models.Model):
     film_planet_id = models.AutoField(primary_key=True)
-    film = models.ForeignKey('Film', on_delete=models.CASCADE)
-    planet = models.ForeignKey('Planet', on_delete=models.CASCADE)
+    film = models.ForeignKey('Film', on_delete=models.CASCADE, blank=True, null=True)
+    planet = models.ForeignKey('Planet', on_delete=models.CASCADE, blank=True, null=True)
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'film_planet'
         ordering = ['film', 'planet']
         verbose_name = 'Film Planet'
@@ -217,6 +236,7 @@ class Vehicle(models.Model):
     max_atmosphering_speed = models.CharField(max_length=40, blank=True, null=True)
     cargo_capacity = models.CharField(max_length=40, blank=True, null=True)
     consumables = models.CharField(max_length=40, blank=True, null=True)
+    pilots = models.ForeignKey('Person', related_name='vehicle_person', on_delete=models.PROTECT, blank=True, null=True)
 
     class Meta:
         managed = True
