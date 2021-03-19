@@ -4,11 +4,11 @@
     <header>
         <div class="row">
             <div class="col-sm-9">
-            {% if species.name %}
-                <h2>{{ species.name | safe }}</h2>
-            {% endif %}
+                {% if species.name %}
+                    <h2>{{ species.name | safe }}</h2>
+                {% endif %}
             </div>
-        {% if user.is_authenticated %}
+            {% if user.is_authenticated %}
                 <div class="col-xs-1">
                     <a class="btn btn-outline-secondary" href="">edit</a>
                 </div>
@@ -21,7 +21,7 @@
             </div>
         </div>
     </header>
-
+ 
     {% if species.name %}
         <div class="row">
             <div class="col-sm-2">
