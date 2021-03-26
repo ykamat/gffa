@@ -1,5 +1,5 @@
 from django.db import models
-# from django.urls import reverse
+from django.urls import reverse
 
 
 class Film(models.Model):
@@ -227,3 +227,23 @@ class Vehicle(models.Model):
 
     def __str___(self):
         return self.name
+
+    def get_absolute_url(self):
+        return reverse('vehicle_detail', kwargs={'pk': self.pk})
+
+
+class VehicleJurisdiction(models.Model):
+    """
+	PK added to satisfy Django requirement. The Vehicle entry will be deleted if
+    corresponding parent record in the vehicle table is deleted.
+    This mirrors CONSTRAINT behavior in the MySQL back-end.
+	"""
+    vehicle_jurisdiction_id = models.AutoField(primary_key=True)
+    vehicle = models.ForeignKey('Vehicle', on_delete=models.CASCADE, blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'vehicle_jurisdiction'
+        ordering = ['vehicle']
+        verbose_name = 'Vehicle Jurisdiction'
+        verbose_name_plural = 'Vehicle Jurisdictions'

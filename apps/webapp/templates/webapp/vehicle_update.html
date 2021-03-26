@@ -1,0 +1,83 @@
+{% extends 'webapp/base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block mainbody %}
+
+	<header>
+		<div class="row">
+			<div class="col-sm-11">
+				<h2>Film Update</h2>
+			</div>
+			<div class="col-xs-1">
+				<a class="btn btn-outline-secondary" href="{{request.META.HTTP_REFERER}}">back</a>
+			</div>
+		</div>
+	</header>
+
+	<p>&nbsp;</p>
+	<!-- novalidate attribute required to render validation messages -->
+	<form method="post" novalidate>
+		{% csrf_token %}
+	
+			<div class="row">
+				<div class="col-6">
+					{{ form.name | as_crispy_field }}
+				</div>
+			</div>
+	
+			<div class="row">
+				<div class="col-6">
+					{{ form.manufacturer | as_crispy_field }}
+				</div>
+			</div>
+	
+			<div class="row">
+				<div class="col-6">
+					{{ form.cost_in_credits | as_crispy_field }}
+				</div>
+			</div>
+	
+			<div class="row">
+				<div class="col-3">
+					{{ form.length | as_crispy_field }}
+				</div>
+				<div class="col-3">
+					{{ form.max_atmosphering_speed | as_crispy_field }}
+				</div>
+			</div>
+	
+			<div class="row">
+				<div class="col-6">
+					{{ form.crew | as_crispy_field}}
+				</div>
+			</div>
+	
+			<div class="row">
+				<div class="col-6">
+					{{ form.passengers | as_crispy_field}}
+				</div>
+			</div>
+	
+			<div class="row">
+				<div class="col-3">
+					{{ form.cargo_capacity | as_crispy_field }}
+				</div>
+				<div class="col-3">
+					{{ form.consumables | as_crispy_field }}
+				</div>
+			</div>
+	
+			<div class="row">
+				<div class="col-6">
+					{{ form.vehicle_class | as_crispy_field}}
+				</div>
+			</div>
+
+	<button type="submit" class="btn btn-outline-success">Update</button>
+		&nbsp;<a class="btn btn-outline-secondary" href="{% url 'vehicle_detail' vehicles.pk %}">cancel</a>
+	</form>
+
+<p>&nbsp;</p>
+
+{% endblock mainbody %}

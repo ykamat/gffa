@@ -1,18 +1,17 @@
 {% extends 'webapp/base.html' %}
 {% block mainbody %}
 
-
     <header>
         <div class="row">
             <div class="col-sm-9">
-                <h2>{{ site.site_name | safe }}</h2>
+                <h2>{{ vehicles.name | safe }}</h2>
             </div>
             {% if user.is_authenticated %}
                 <div class="col-xs-1">
-                    <a class="btn btn-outline-secondary">edit</a>
+                    <a class="btn btn-outline-secondary" href="{% url 'vehicle_update' vehicles.pk %}">edit</a>
                 </div>
                 <div class="col-xs-1">
-                    &nbsp;<a class="btn btn-outline-warning">delete</a>
+                    &nbsp;<a class="btn btn-outline-warning" href="{% url 'vehicle_delete' vehicles.pk %}">delete</a>
                 </div>
             {% endif %}
             <div class="col-xs-1">
