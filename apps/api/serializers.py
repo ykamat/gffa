@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
-from apps.webapp.models import Film, Person, Planet, Vehicle, Species, Starship, FilmCharacter
+from apps.webapp.models import Film, Person, Planet, Vehicle, Species, Starship, FilmCharacter, FilmPlanet
 
 
 class FilmSerializer(serializers.HyperlinkedModelSerializer):
@@ -142,7 +142,7 @@ class FilmCharacterSerializer(serializers.HyperlinkedModelSerializer):
             'character_id',
         }
 
-class FilmPersonSerializer(serializers.HyperlinkedModelSerializer):
+class FilmPlanetSerializer(serializers.HyperlinkedModelSerializer):
     film_id = serializers.ReadOnlyField(source='film.film_id')
     planet_id = serializers.ReadOnlyField(source='planet.planet_id')
 
