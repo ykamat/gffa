@@ -247,3 +247,25 @@ class Vehicle(models.Model):
 
     def __str___(self):
         return self.name
+
+    def get_absolute_url(self):
+        return reverse('vehicle_detail', kwargs={'pk': self.pk})
+
+
+class VehiclePassenger(models.Model):
+    """
+	PK added to satisfy Django requirement. The Vehicle entry will be deleted if
+    corresponding parent record in the vehicle table is deleted.
+    This mirrors CONSTRAINT behavior in the DB back-end.
+	"""
+    vehicle_passenger_id = models.AutoField(primary_key=True)
+    vehicle = models.ForeignKey('Vehicle', on_delete=models.CASCADE, blank=True, null=True)
+    passenger = models.ForeignKey('Person', on_delete=models.CASCADE, blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'vehicle_passenger'
+        ordering = ['vehicle', 'passenger']
+        verbose_name = 'Vehicle Passenger'
+        verbose_name_plural = 'Vehicle Passenger'
+        unique_together = (('vehicle', 'passenger'),)

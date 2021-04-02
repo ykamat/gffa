@@ -4,8 +4,9 @@ from django.shortcuts import redirect, render
 from django.views import generic
 from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
-from . forms import FilmForm
-from . models import Film, FilmCharacter, FilmPlanet, Person, Planet, Species, Starship, Vehicle
+from . forms import FilmForm, VehicleForm
+from . models import Film, FilmCharacter, FilmPlanet, Person, Planet, Species, Starship, Vehicle, VehiclePassenger
+
 
 
 class HomePageView(generic.TemplateView):
@@ -306,6 +307,54 @@ class StarshipListView(generic.ListView):
 		return Starship.objects.all()
 		# return Starship.objects.select_related('?').order_by('?')
 
+@method_decorator(login_required, name='dispatch')
+class VehicleCreateView(generic.View):
+	model = Vehicle
+	form_class = VehicleForm
+	success_message = "Vehicle created successfully"
+	template_name = 'webapp/vehicle_new.html'
+
+	def dispatch(self, *args, **kwargs):
+		return super().dispatch(*args, **kwargs)
+
+	def post(self, request):
+		form = VehicleForm(request.POST)
+		if form.is_valid():
+			vehicle = form.save(commit=False)
+			vehicle.save()
+			if form.cleaned_data['passengers']:
+				for passenger in form.cleaned_data['passengers']:
+					VehiclePassenger.objects.create(vehicle=vehicle, passenger=passenger)
+			return HttpResponseRedirect(vehicle.get_absolute_url())
+
+		return render(request, 'webapp/vehicle_new.html', {'form': form})
+
+	def get(self, request):
+		form = VehicleForm()
+		return render(request, 'webapp/vehicle_new.html', {'form': form})
+
+@method_decorator(login_required, name='dispatch')
+class VehicleDeleteView(generic.DeleteView):
+	model = Vehicle
+	success_message = "Vehicle deleted successfully"
+	success_url = reverse_lazy('vehicles')
+	context_object_name = 'vehicles'
+	template_name = 'webapp/vehicle_delete.html'
+
+	def dispatch(self, *args, **kwargs):
+		return super().dispatch(*args, **kwargs)
+
+	def delete(self, request, *args, **kwargs):
+		self.object = self.get_object()
+
+		# Delete VehiclePassenger entries
+		VehiclePassenger.objects \
+			.filter(vehicle_id=self.object.vehicle_id) \
+			.delete()
+
+		self.object.delete()
+
+		return HttpResponseRedirect(self.get_success_url())
 
 class VehicleDetailView(generic.DetailView):
 	model = Vehicle
@@ -323,3 +372,20 @@ class VehicleListView(generic.ListView):
 
 	def get_queryset(self):
 		return Vehicle.objects.all()
+
+@method_decorator(login_required, name='dispatch')
+class VehicleUpdateView(generic.UpdateView):
+	model = Vehicle
+	form_class = VehicleForm
+	context_object_name = 'vehicles'
+	success_message = "Vehicle updated successfully"
+	template_name = 'webapp/vehicle_update.html'
+
+	def dispatch(self, *args, **kwargs):
+		return super().dispatch(*args, **kwargs)
+
+	def form_valid(self, form):
+		vehicle = form.save(commit=False)
+		vehicle.save()
+
+		return HttpResponseRedirect(vehicle.get_absolute_url())

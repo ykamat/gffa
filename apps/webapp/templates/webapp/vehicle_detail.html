@@ -8,10 +8,10 @@
             </div>
             {% if user.is_authenticated %}
                 <div class="col-xs-1">
-                    <a class="btn btn-outline-secondary">edit</a>
+                    <a class="btn btn-outline-secondary" href="{% url 'vehicle_update' vehicles.pk %}">edit</a>
                 </div>
                 <div class="col-xs-1">
-                    &nbsp;<a class="btn btn-outline-warning">delete</a>
+                    &nbsp;<a class="btn btn-outline-warning" href="{% url 'vehicle_delete' vehicles.pk %}">delete</a>
                 </div>
             {% endif %}
             <div class="col-xs-1">
