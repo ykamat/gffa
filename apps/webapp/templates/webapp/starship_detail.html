@@ -4,7 +4,7 @@
     <header>
         <div class="row">
             <div class="col-sm-9">
-                <h2>{{ site.site_name | safe }}</h2>
+                <h2>{{ starships.name | safe }}</h2>
             </div>
             {% if user.is_authenticated %}
                 <div class="col-xs-1">
@@ -20,6 +20,7 @@
         </div>
     </header>
 
+    &nbsp;
     {% if starships.name %}
         <div class="row">
             <div class="col-sm-2">

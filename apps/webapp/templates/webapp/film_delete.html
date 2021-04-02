@@ -1,0 +1,13 @@
+{% extends 'webapp/base.html' %}
+
+{% block mainbody %}
+
+	<form method="post">
+	{% csrf_token %}
+		<p>Are you sure you want to delete the film "{{ film.title }}"?</p>
+		<button type="submit" class="btn btn-outline-danger">delete</button>
+		<a class="btn btn-outline-secondary" href="{% url 'films' %}">cancel</a>
+	</form>
+	<br>
+
+{% endblock mainbody %}

@@ -1,6 +1,26 @@
 {% extends 'webapp/base.html' %}
 {% block mainbody %}
 
+    <header>
+        <div class="row">
+            <div class="col-sm-9">
+                <h2>{{ persons.name | safe }}</h2>
+            </div>
+            {% if user.is_authenticated %}
+                <div class="col-xs-1">
+                    <a class="btn btn-outline-secondary">edit</a>
+                </div>
+                <div class="col-xs-1">
+                    &nbsp;<a class="btn btn-outline-warning">delete</a>
+                </div>
+            {% endif %}
+            <div class="col-xs-1">
+                &nbsp;<a class="btn btn-outline-secondary" href="{{request.META.HTTP_REFERER}}">back</a>
+            </div>
+        </div>
+    </header>
+
+    <br>
     {% if persons.name %}
         <div class="row">
             <div class="col-sm-2">
@@ -110,5 +130,6 @@
             </div>
         </div>
     {% endif %}
+    <br>
 
 {% endblock mainbody %}
