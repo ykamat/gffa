@@ -1,0 +1,68 @@
+{% extends 'webapp/base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block mainbody %}
+
+	<header>
+		<div class="row">
+			<div class="col-sm-11">
+				<h2>New Film</h2>
+			</div>
+			<div class="col-xs-1">
+				<a class="btn btn-outline-secondary" href="{{request.META.HTTP_REFERER}}">back</a>
+			</div>
+		</div>
+	</header>
+
+	<br>
+	<!-- novalidate attribute required to render validation messages -->
+	<form method="post" novalidate>
+	{% csrf_token %}
+
+		<div class="row">
+			<div class="col-6">
+				{{ form.title | as_crispy_field }}
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-6">
+				{{ form.opening_crawl | as_crispy_field }}
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-3">
+				{{ form.director | as_crispy_field }}
+			</div>
+			<div class="col-3">
+				{{ form.producer | as_crispy_field }}
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-3">
+				{{ form.episode_id | as_crispy_field }}
+			</div>
+			<div class="col-3">
+				{{ form.release_date | as_crispy_field }}
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-3">
+				{{ form.characters | as_crispy_field }}
+			</div>
+			<div class="col-3">
+				{{ form.planets | as_crispy_field }}
+			</div>
+		</div>
+
+	<button type="submit" class="btn btn-outline-success">Add</button>
+		&nbsp;<a class="btn btn-outline-secondary" href="{% url 'films' %}">cancel</a>
+	</form>
+
+<br>
+
+{% endblock mainbody %}

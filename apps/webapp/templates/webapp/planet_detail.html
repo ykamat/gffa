@@ -4,7 +4,7 @@
     <header>
         <div class="row">
             <div class="col-sm-9">
-                <h2>{{ site.site_name | safe }}</h2>
+                <h2>{{ planets.name | safe }}</h2>
             </div>
             {% if user.is_authenticated %}
                 <div class="col-xs-1">
@@ -20,6 +20,7 @@
         </div>
     </header>
 
+    <br>
     <article>
         {% if planets.name %}
             <div class="row">
@@ -120,5 +121,6 @@
             </div>
         {% endif %}
     </article>
+    <br>
 
 {% endblock mainbody %}

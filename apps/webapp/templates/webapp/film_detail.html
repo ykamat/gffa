@@ -4,14 +4,14 @@
     <header>
         <div class="row">
             <div class="col-sm-9">
-                <h2>{{ site.site_name | safe }}</h2>
+                <h2>{{ film.title | safe }}</h2>
             </div>
             {% if user.is_authenticated %}
                 <div class="col-xs-1">
-                    <a class="btn btn-outline-secondary">edit</a>
+                    <a class="btn btn-outline-secondary" href="{% url 'film_update' film.pk %}">edit</a>
                 </div>
                 <div class="col-xs-1">
-                    &nbsp;<a class="btn btn-outline-warning">delete</a>
+                    &nbsp;<a class="btn btn-outline-warning" href="{% url 'film_delete' film.pk %}">delete</a>
                 </div>
             {% endif %}
             <div class="col-xs-1">
@@ -20,93 +20,100 @@
         </div>
     </header>
 
+    <br>
     <article>
-        {% if films.title %}
+        {% if film.title %}
             <div class="row">
                 <div class="col-sm-2">
                     <p>Title</p>
                 </div>
                 <div class="col-sm-10">
-                    <p>{{ films.title }}</p>
+                    <p>{{ film.title }}</p>
                 </div>
             </div>
         {% endif %}
 
-        {% if films.episode_id %}
+        {% if film.episode_id %}
             <div class="row">
                 <div class="col-sm-2">
                     <p>Episode ID</p>
                 </div>
                 <div class="col-sm-10">
-                    <p>{{ films.episode_id }}</p>
+                    <p>{{ film.episode_id }}</p>
                 </div>
             </div>
         {% endif %}
 
-        {% if films.opening_crawl %}
+        {% if film.opening_crawl %}
             <div class="row">
                 <div class="col-sm-2">
                     <p>Opening Crawl</p>
                 </div>
                 <div class="col-sm-10">
-                    <p>{{ films.opening_crawl }}</p>
+                    <p>{{ film.opening_crawl }}</p>
                 </div>
             </div>
         {% endif %}
 
-        {% if films.director %}
+        {% if film.director %}
             <div class="row">
                 <div class="col-sm-2">
                     <p>Director</p>
                 </div>
                 <div class="col-sm-10">
-                    <p>{{ films.director }}</p>
+                    <p>{{ film.director }}</p>
                 </div>
             </div>
         {% endif %}
 
-        {% if films.producer %}
+        {% if film.producer %}
             <div class="row">
                 <div class="col-sm-2">
                     <p>Producer</p>
                 </div>
                 <div class="col-sm-10">
-                    <p>{{ films.producer }}</p>
+                    <p>{{ film.producer }}</p>
                 </div>
             </div>
         {% endif %}
 
-        {% if films.release_date %}
+        {% if film.release_date %}
             <div class="row">
                 <div class="col-sm-2">
                     <p>Release Date</p>
                 </div>
                 <div class="col-sm-10">
-                    <p>{{ films.release_date }}</p>
+                    <p>{{ film.release_date }}</p>
                 </div>
             </div>
         {% endif %}
 
-        {% if films.characters %}
+        {% if film.characters %}
             <div class="row">
                 <div class="col-sm-2">
                     <p>Characters</p>
                 </div>
                 <div class="col-sm-10">
-                    <p>{{ films.characters }}</p>
+                    {% for character in film.characters.all %}
+                        <li>{{ character.name }}</li>
+                    {% endfor %}
                 </div>
             </div>
         {% endif %}
 
-        {% if films.planets %}
+        {% if film.planets %}
             <div class="row">
                 <div class="col-sm-2">
                     <p>Planets</p>
                 </div>
                 <div class="col-sm-10">
-                    <p>{{ films.planets }}</p>
+                    {% for planet in film.planets.all %}
+                        <li>{{ planet.name }}</li>
+                    {% endfor %}
                 </div>
             </div>
         {% endif %}
     </article>
+    <br>
+
 {% endblock mainbody %}
