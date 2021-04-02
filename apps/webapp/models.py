@@ -232,18 +232,20 @@ class Vehicle(models.Model):
         return reverse('vehicle_detail', kwargs={'pk': self.pk})
 
 
-class VehicleJurisdiction(models.Model):
+class VehiclePassenger(models.Model):
     """
 	PK added to satisfy Django requirement. The Vehicle entry will be deleted if
     corresponding parent record in the vehicle table is deleted.
-    This mirrors CONSTRAINT behavior in the MySQL back-end.
+    This mirrors CONSTRAINT behavior in the DB back-end.
 	"""
-    vehicle_jurisdiction_id = models.AutoField(primary_key=True)
+    vehicle_passenger_id = models.AutoField(primary_key=True)
     vehicle = models.ForeignKey('Vehicle', on_delete=models.CASCADE, blank=True, null=True)
+    passenger = models.ForeignKey('Person', on_delete=models.CASCADE, blank=True, null=True)
 
     class Meta:
         managed = True
-        db_table = 'vehicle_jurisdiction'
-        ordering = ['vehicle']
-        verbose_name = 'Vehicle Jurisdiction'
-        verbose_name_plural = 'Vehicle Jurisdictions'
+        db_table = 'vehicle_passenger'
+        ordering = ['vehicle', 'passenger']
+        verbose_name = 'Vehicle Passenger'
+        verbose_name_plural = 'Vehicle Passenger'
+        unique_together = (('vehicle', 'passenger'),)

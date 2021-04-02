@@ -5,7 +5,7 @@ from django.views import generic
 from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 from . forms import VehicleForm
-from . models import Film, Person, Planet, Species, Starship, Vehicle, VehicleJurisdiction
+from . models import Film, Person, Planet, Species, Starship, Vehicle, VehiclePassenger
 
 
 class HomePageView(generic.TemplateView):
@@ -187,7 +187,9 @@ class VehicleCreateView(generic.View):
 		if form.is_valid():
 			vehicle = form.save(commit=False)
 			vehicle.save()
-			VehicleJurisdiction.objects.create(vehicle=vehicle)
+			if form.cleaned_data['passengers']:
+				for passenger in form.cleaned_data['passengers']:
+					VehiclePassenger.objects.create(vehicle=vehicle, passenger=passenger)
 			return HttpResponseRedirect(vehicle.get_absolute_url())
 
 		return render(request, 'webapp/vehicle_new.html', {'form': form})
@@ -210,9 +212,9 @@ class VehicleDeleteView(generic.DeleteView):
 	def delete(self, request, *args, **kwargs):
 		self.object = self.get_object()
 
-		# Delete VehicleJurisdiction entries
-		VehicleJurisdiction.objects \
-			.filter(film_id=self.object.film_id) \
+		# Delete VehiclePassenger entries
+		VehiclePassenger.objects \
+			.filter(vehicle_id=self.object.vehicle_id) \
 			.delete()
 
 		self.object.delete()
