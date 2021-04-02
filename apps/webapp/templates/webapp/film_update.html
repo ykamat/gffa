@@ -50,8 +50,17 @@
 			</div>
 		</div>
 
+		<div class="row">
+			<div class="col-3">
+				{{ form.characters | as_crispy_field }}
+			</div>
+			<div class="col-3">
+				{{ form.planets | as_crispy_field }}
+			</div>
+		</div>
+
 	<button type="submit" class="btn btn-outline-success">Update</button>
-		&nbsp;<a class="btn btn-outline-secondary" href="{% url 'film_detail' films.pk %}">cancel</a>
+		&nbsp;<a class="btn btn-outline-secondary" href="{% url 'film_detail' film.pk %}">cancel</a>
 	</form>
 
 <br>

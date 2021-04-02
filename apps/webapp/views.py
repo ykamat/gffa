@@ -5,7 +5,7 @@ from django.views import generic
 from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 from . forms import FilmForm
-from . models import Film, FilmJurisdiction, Person, Planet, Species, Starship, Vehicle
+from . models import Film, FilmCharacter, FilmPlanet, Person, Planet, Species, Starship, Vehicle
 
 
 class HomePageView(generic.TemplateView):
@@ -51,9 +51,14 @@ class FilmCreateView(generic.View):
 		if form.is_valid():
 			film = form.save(commit=False)
 			film.save()
-			FilmJurisdiction.objects.create(film=film)
-			# return redirect(film) # shortcut to object's get_absolute_url()
-			return HttpResponseRedirect(film.get_absolute_url())
+
+			for character in form.cleaned_data['characters']:
+				FilmCharacter.objects.create(film=film, character=character)
+			for planet in form.cleaned_data['planets']:
+				FilmPlanet.objects.create(film=film, planet=planet)
+
+			return redirect(film) # shortcut to object's get_absolute_url()
+			# return HttpResponseRedirect(film.get_absolute_url())
 
 		return render(request, 'webapp/film_new.html', {'form': form})
 
@@ -67,7 +72,7 @@ class FilmDeleteView(generic.DeleteView):
 	model = Film
 	success_message = "Film deleted successfully"
 	success_url = reverse_lazy('films')
-	context_object_name = 'films'
+	context_object_name = 'film'
 	template_name = 'webapp/film_delete.html'
 
 	def dispatch(self, *args, **kwargs):
@@ -77,7 +82,10 @@ class FilmDeleteView(generic.DeleteView):
 		self.object = self.get_object()
 
 		# Delete FilmJurisdiction entries
-		FilmJurisdiction.objects \
+		FilmCharacter.objects \
+			.filter(film_id=self.object.film_id) \
+			.delete()
+		FilmPlanet.objects \
 			.filter(film_id=self.object.film_id) \
 			.delete()
 
@@ -90,7 +98,7 @@ class FilmDeleteView(generic.DeleteView):
 class FilmUpdateview(generic.UpdateView):
 	model = Film
 	form_class = FilmForm
-	context_object_name = 'films'
+	context_object_name = 'film'
 	success_message = "Film updated successfully"
 	template_name = 'webapp/film_update.html'
 
@@ -101,8 +109,64 @@ class FilmUpdateview(generic.UpdateView):
 		film = form.save(commit=False)
 		film.save()
 
-		return HttpResponseRedirect(film.get_absolute_url())
-		# return redirect('webapp/film_detail', pk=film.pk)
+		# If any existing characters are not in updated list, delete them
+		new_character_ids = []
+		old_character_ids = FilmCharacter.objects \
+			.values_list('character_id', flat=True) \
+			.filter(film_id=film.film_id)
+
+		# New Character list
+		new_characters = form.cleaned_data['characters']
+
+		# Insert new unmatched character entries
+		for character in new_characters:
+			new_id = character.person_id
+			new_character_ids.append(new_id)
+			if new_id in old_character_ids:
+				continue
+			else:
+				FilmCharacter.objects \
+					.create(film=film, character=character)
+
+		# Delete old unmatched character entries
+		for old_character_id in old_character_ids:
+			if old_character_id in new_character_ids:
+				continue
+			else:
+				FilmCharacter.objects \
+					.filter(film_id=film.film_id, character_id=old_character_id) \
+					.delete()
+
+		# If any existing planets are not in updated list, delete them
+		new_planet_ids = []
+		old_planet_ids = FilmPlanet.objects \
+			.values_list('planet_id', flat=True) \
+			.filter(film_id=film.film_id)
+
+		# New Planet list
+		new_planets = form.cleaned_data['planets']
+
+		# Insert new unmatched planet entries
+		for planet in new_planets:
+			new_id = planet.planet_id
+			new_planet_ids.append(new_id)
+			if new_id in old_planet_ids:
+				continue
+			else:
+				FilmPlanet.objects \
+					.create(film=film, planet=planet)
+
+		# Delete old unmatched planet entries
+		for old_planet_id in old_planet_ids:
+			if old_planet_id in new_planet_ids:
+				continue
+			else:
+				FilmPlanet.objects \
+					.filter(film_id=film.film_id, planet_id=old_planet_id) \
+					.delete()
+
+		# return HttpResponseRedirect(film.get_absolute_url())
+		return redirect('film_detail', pk=film.pk)
 
 
 class FilmPageView(generic.TemplateView):
@@ -131,7 +195,7 @@ class VehiclePageView(generic.TemplateView):
 
 class FilmDetailView(generic.DetailView):
 	model = Film
-	context_object_name = 'films'
+	context_object_name = 'film'
 	template_name = 'webapp/film_detail.html'
 
 	def get_object(self):

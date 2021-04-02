@@ -12,7 +12,7 @@ class Film(models.Model):
     director = models.CharField(max_length=100, blank=True, null=True)
     producer = models.CharField(max_length=100, blank=True, null=True)
     release_date = models.DateField(blank=True, null=True)
-    characters = models.ManyToManyField('Person', through='FilmPerson', related_name='film_person', blank=True)
+    characters = models.ManyToManyField('Person', through='FilmCharacter', related_name='film_person', blank=True)
     planets = models.ManyToManyField('Planet', through='FilmPlanet', related_name='film_planet', blank=True)
     # starships = models.ManyToManyField('Starship', related_name="film_starships", blank=True)
     # vehicles = models.ManyToManyField('Vehicle', related_name="film_vehicles", blank=True)
@@ -53,35 +53,35 @@ class Film(models.Model):
         return self.title
 
 
-class FilmJurisdiction(models.Model):
-    """
-	PK added to satisfy Django requirement. The Film entry will be deleted if
-    corresponding parent record in the film table is deleted.
-    This mirrors CONSTRAINT behavior in the MySQL back-end.
-	"""
-    film_jurisdiction_id = models.AutoField(primary_key=True)
-    film = models.ForeignKey('Film', on_delete=models.CASCADE, blank=True, null=True)
+# class FilmJurisdiction(models.Model):
+#     """
+# 	PK added to satisfy Django requirement. The Film entry will be deleted if
+#     corresponding parent record in the film table is deleted.
+#     This mirrors CONSTRAINT behavior in the MySQL back-end.
+# 	"""
+#     film_jurisdiction_id = models.AutoField(primary_key=True)
+#     film = models.ForeignKey('Film', on_delete=models.CASCADE, blank=True, null=True)
 
-    class Meta:
-        managed = True
-        db_table = 'film_jurisdiction'
-        ordering = ['film']
-        verbose_name = 'Film Jurisdiction'
-        verbose_name_plural = 'Film Jurisdictions'
+#     class Meta:
+#         managed = True
+#         db_table = 'film_jurisdiction'
+#         ordering = ['film']
+#         verbose_name = 'Film Jurisdiction'
+#         verbose_name_plural = 'Film Jurisdictions'
 
 
-class FilmPerson(models.Model):
+class FilmCharacter(models.Model):
     film_person_id = models.AutoField(primary_key=True)
     film = models.ForeignKey('Film', on_delete=models.CASCADE, blank=True, null=True)
-    person = models.ForeignKey('Person', on_delete=models.CASCADE, blank=True, null=True)
+    character = models.ForeignKey('Person', on_delete=models.CASCADE, blank=True, null=True)
 
     class Meta:
         managed = True
-        db_table = 'film_person'
-        ordering = ['film', 'person']
+        db_table = 'film_character'
+        ordering = ['film', 'character']
         verbose_name = 'Film Character'
         verbose_name_plural = 'Film Characters'
-        unique_together = (('film', 'person'),)
+        unique_together = (('film', 'character'),)
 
 
 class FilmPlanet(models.Model):
@@ -239,7 +239,7 @@ class Vehicle(models.Model):
     pilots = models.ForeignKey('Person', related_name='vehicle_person', on_delete=models.PROTECT, blank=True, null=True)
 
     class Meta:
-        managed = True
+        managed = False
         db_table = 'vehicle'
         ordering = ['name']
         verbose_name = 'Vehicle'
