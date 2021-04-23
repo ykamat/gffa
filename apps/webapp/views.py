@@ -17,6 +17,10 @@ class AboutPageView(generic.TemplateView):
 	template_name = 'webapp/about.html'
 
 
+class ContributerPageView(generic.TemplateView):
+	template_name = 'webapp/contributers.html'
+
+
 # def about(request):
 #     # stripe_key = settings.STRIPE_KEYS['publishable']
 #     # data = cache.get('resource_data')
