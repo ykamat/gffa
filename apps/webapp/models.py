@@ -263,7 +263,7 @@ class VehiclePassenger(models.Model):
     passenger = models.ForeignKey('Person', on_delete=models.CASCADE, blank=True, null=True)
 
     class Meta:
-        managed = True
+        managed = False
         db_table = 'vehicle_passenger'
         ordering = ['vehicle', 'passenger']
         verbose_name = 'Vehicle Passenger'

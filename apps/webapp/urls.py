@@ -38,6 +38,7 @@ from . import views
 urlpatterns = [
     # path(r"^admin/", include(admin.site.urls)),
     path('', views.HomePageView.as_view(), name='home'),
+    path('contributers/', views.ContributerPageView.as_view(), name='contributers'),
     path('docs/', views.DocsPageView.as_view(), name='docs'),
     path('about/', views.AboutPageView.as_view(), name='about'),
     path('root/', views.RootPageView.as_view(), name='root'),
