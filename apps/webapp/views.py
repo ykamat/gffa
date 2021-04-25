@@ -16,6 +16,17 @@ class HomePageView(generic.TemplateView):
 class AboutPageView(generic.TemplateView):
 	template_name = 'webapp/about.html'
 
+	def get_context_data(self, **kwargs):
+		context = super().get_context_data(**kwargs)
+		context['Films'] = Film.objects.all().count()
+		context['Persons'] = Person.objects.all().count()
+		context['Planets'] = Planet.objects.all().count()
+		context['Species'] = Species.objects.all().count()
+		context['Starships'] = Starship.objects.all().count()
+		context['Vehicles'] = Vehicle.objects.all().count()
+
+		return context
+
 
 class ContributerPageView(generic.TemplateView):
 	template_name = 'webapp/contributers.html'
