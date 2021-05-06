@@ -16,21 +16,6 @@ class HomePageView(generic.TemplateView):
 class AboutPageView(generic.TemplateView):
 	template_name = 'webapp/about.html'
 
-	def get_context_data(self, **kwargs):
-		context = super().get_context_data(**kwargs)
-		context['Films'] = Film.objects.all().count()
-		context['Persons'] = Person.objects.all().count()
-		context['Planets'] = Planet.objects.all().count()
-		context['Species'] = Species.objects.all().count()
-		context['Starships'] = Starship.objects.all().count()
-		context['Vehicles'] = Vehicle.objects.all().count()
-
-		return context
-
-
-class ContributerPageView(generic.TemplateView):
-	template_name = 'webapp/contributers.html'
-
 
 # def about(request):
 #     # stripe_key = settings.STRIPE_KEYS['publishable']
@@ -353,7 +338,7 @@ class VehicleDeleteView(generic.DeleteView):
 	model = Vehicle
 	success_message = "Vehicle deleted successfully"
 	success_url = reverse_lazy('vehicles')
-	context_object_name = 'vehicles'
+	context_object_name = 'vehicle'
 	template_name = 'webapp/vehicle_delete.html'
 
 	def dispatch(self, *args, **kwargs):
@@ -373,7 +358,7 @@ class VehicleDeleteView(generic.DeleteView):
 
 class VehicleDetailView(generic.DetailView):
 	model = Vehicle
-	context_object_name = 'vehicles'
+	context_object_name = 'vehicle'
 	template_name = 'webapp/vehicle_detail.html'
 
 	def get_object(self):
@@ -392,7 +377,7 @@ class VehicleListView(generic.ListView):
 class VehicleUpdateView(generic.UpdateView):
 	model = Vehicle
 	form_class = VehicleForm
-	context_object_name = 'vehicles'
+	context_object_name = 'vehicle'
 	success_message = "Vehicle updated successfully"
 	template_name = 'webapp/vehicle_update.html'
 
